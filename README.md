@@ -13,6 +13,10 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 https://cesar-vct.atlassian.net/jira/software/projects/FD/boards/4
 ![Captura de tela 2024-03-17 193139](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/a52ef183-4fac-41d4-99d3-40e1e14187e6)
 
+## Links
+
+[Link para o vídeo de protótipo (Lo-fi)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
+
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT].
