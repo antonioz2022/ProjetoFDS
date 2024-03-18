@@ -16,6 +16,8 @@ https://cesar-vct.atlassian.net/jira/software/projects/FD/boards/4
 ## Links
 
 [Link para o vídeo de protótipo (Lo-fi)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
+</br>
+[Jira](https://cesar-vct.atlassian.net/jira/software/projects/FD/boards/4)
 
 ## Licença
 
