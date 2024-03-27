@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div class="body-register">
 {% if user.is_authenticated %}
-Hi {{ user.username }}!
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Log Out</button>
-</form>
+Hi {{ user.username }}!  
+<a href="{% url 'pet4you:logout' %}">logout</a>
 {% else %}
 <p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
+<span style="margin-right: 5px;"></span>
+<a href="{% url 'pet4you:login' %}">Log In</a>
+</div>
 
 {% endif %}
 {% endblock %}
