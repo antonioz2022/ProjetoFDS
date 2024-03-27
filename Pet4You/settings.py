@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'pet4you_app',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
