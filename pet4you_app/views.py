@@ -23,6 +23,12 @@ def logout_view(request):
     logout(request)
     return redirect("pet4you:login")
 
+def login():
+    pass
+
+def signup():
+    pass
+
 
 def home(request):
     return render(request, "home.html", {})
