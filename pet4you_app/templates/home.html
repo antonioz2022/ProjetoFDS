@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="body-register">
+<div style="text-align: center;">
+    <h1>Pet4You</h1>
+    <p>Encontre o seu novo melhor amigo.</p>
 {% if user.is_authenticated %}
+<div style="margin-top: 20px;">
 Hi {{ user.username }}!  
 <a href="{% url 'pet4you:logout' %}">logout</a>
+<p>Meus anúncios</p>
+</div>
 {% else %}
 <p>You are not logged in</p>
 <span style="margin-right: 5px;"></span>
