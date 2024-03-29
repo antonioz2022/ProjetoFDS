@@ -1,0 +1,18 @@
+<!-- Formulário método de post -->
+{% extends "base.html" %}
+{% block body %}
+<form id="posting" method="post">
+    {% csrf_token %}   
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="species">Species:</label><br>
+    <input type="text" id="species" name="species"><br>
+    <label for="breed">Breed:</label><br>
+    <input type="text" id="breed" name="breed"><br>
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age" min="1" max="99">
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description"></textarea><br>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

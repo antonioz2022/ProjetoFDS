@@ -8,7 +8,7 @@
 <div style="margin-top: 20px;">
 Hi {{ user.username }}!  
 <a href="{% url 'pet4you:logout' %}">logout</a>
-<p>Meus anúncios</p>
+<a href="{% url 'pet4you:posting' %}">Meus Anúncios</a>
 </div>
 {% else %}
 <p>You are not logged in</p>
