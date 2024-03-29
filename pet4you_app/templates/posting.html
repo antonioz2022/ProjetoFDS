@@ -1,18 +1,33 @@
-<!-- Formulário método de post -->
 {% extends "base.html" %}
 {% block body %}
-<form id="posting" method="post">
-    {% csrf_token %}   
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br>
-    <label for="species">Species:</label><br>
-    <input type="text" id="species" name="species"><br>
-    <label for="breed">Breed:</label><br>
-    <input type="text" id="breed" name="breed"><br>
-    <label for="age">Age:</label><br>
-    <input type="number" id="age" name="age" min="1" max="99">
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description"></textarea><br>
-    <input type="submit" value="Submit">
-</form>
+<div class="wrapper">
+    <h1>Post your pet!</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-box">
+            <input type="text" id="name" name="name" placeholder="Name">
+            <i class="bx bxs-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="species" name="species" placeholder="Species">
+            <i class="bx bxs-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="breed" name="breed" placeholder="Breed">
+            <i class="bx bxs-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
+            <i class="bx bxs-user"></i>
+        </div>
+        <div id="description" , class="input-box">
+            <textarea id="description" name="description" placeholder="Description"></textarea>
+            <i class="bx bxs-user"></i>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    <div class="register-link">
+        <p><a href="{% url 'pet4you:home' %}">Home</a></p>
+    </div>
+</div>
 {% endblock %}
