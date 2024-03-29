@@ -1,16 +1,36 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="register-section">
-    <div class="form-container wrapper"> <!-- Adicionado a classe 'wrapper' -->
-        <h1>Signup</h1> <!-- Alterado para h1 para manter o estilo do CSS -->
-        <form method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="btn">Submit</button> <!-- Adicionado a classe 'btn' -->
-        </form>
-        <div class="register-link">
-            <p>Already have an account? <a href="{% url 'pet4you:login' %}">Login</a></p> <!-- Corrigido o URL reverso -->
-        </div>
+<div class="wrapper" , style="width: 500px; height: 550px; margin-top: 105px;">
+  <h1>Sign Up</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="input-box", style="margin-top: 0px;">
+      {{ form.username.label_tag }}
+      <p><small>{{ form.username.help_text }}</small></p>
+      {{ form.username }}
+      <i class="bx bxs-user"></i>
     </div>
+
+    <p style="padding-top: 10px;">{{ form.password1.label_tag }}</p>
+    <p><small>{{ form.password1.help_text }}</small></p>
+
+    <div class="input-box", style="margin-top: 5px;">
+      {{ form.password1 }}
+      <i class="bx bxs-lock"></i>
+
+    </div>
+
+    <p style="margin-top: -20px;">{{ form.password2.label_tag }}</p>
+    <p><small>{{ form.password2.help_text }}</small></p>
+    <div class="input-box", style="margin-top: 5px;">
+      {{ form.password2 }}
+      <i class="bx bxs-lock"></i>
+    </div>
+    
+    <button type="submit" class="btn">Sign Up</button>
+  </form>
+  <div class="register-link">
+    <p>Already have an account? <a href="{% url 'pet4you:login' %}">Login</a></p>
+  </div>
 </div>
 {% endblock %}
