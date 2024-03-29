@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="register-section">
-  <div class="form-container shadow-wrap">
-  <h3>Signup </h3>
-<form method="POST">
- {% csrf_token %}
- {{form}}
- <button type="submit">Submit</button>
-</form>
-<a class="signup-link" href="{% url 'pet4you:login' %}">Login</a>
+    <div class="form-container wrapper"> <!-- Adicionado a classe 'wrapper' -->
+        <h1>Signup</h1> <!-- Alterado para h1 para manter o estilo do CSS -->
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn">Submit</button> <!-- Adicionado a classe 'btn' -->
+        </form>
+        <div class="register-link">
+            <p>Already have an account? <a href="{% url 'pet4you:login' %}">Login</a></p> <!-- Corrigido o URL reverso -->
+        </div>
+    </div>
 </div>
-</div>
-{% endblock%}
+{% endblock %}
