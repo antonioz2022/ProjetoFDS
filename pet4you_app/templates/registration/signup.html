@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="body-register">
-<div class="shadow-wrap">
- <div class="form-wrap">
+<div class="register-section">
+  <div class="form-container shadow-wrap">
   <h3>Signup </h3>
 <form method="POST">
  {% csrf_token %}
@@ -10,7 +9,6 @@
  <button type="submit">Submit</button>
 </form>
 <a class="signup-link" href="{% url 'pet4you:login' %}">Login</a>
-</div>
 </div>
 </div>
 {% endblock%}

@@ -1,74 +1,136 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
-    transition: 0.3s all ease-in-out;
-   }
-   .body-register{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-   background-color: #fff;
-   }
-   .shadow-wrap{
-    border-radius: 5px;
-    padding: 25px;
-    background-color:#F0F2FB;
-   }
-   .form-wrap{
-    background-color: #fff;
-   padding: 70px;
-   }
-   .form-wrap form *{
-    display: block;
-    width: 100%;
-   }
-   .form-wrap form label{
-   margin-bottom: 5px;
-   font-size: 14px;
-   font-weight: 700;
-   line-height: 26px; 
-   }
-   .form-wrap form input{
-   padding: 12px 20px;
-   border-radius: 5px;
-   border: 1px solid #DAE1F5;
-   background: #FFF; 
-   color: #545D7A; 
-   }
-   #id_username{
+}
+
+/* Estilos gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
     margin-bottom: 20px;
-   }
-   .form-wrap button{
-    border-radius: 5px;
-   background: #10182F;
-   color: #FFF;
-   cursor: pointer;
-   text-align: center;
-   font-size: 16px;
-   padding: 12px 68px;
-   font-weight: 700;
-   border: 1px solid transparent;
-   margin-top: 30px;
-   line-height: 26px; 
-   }
-   .signup-link{
-    color: #10182F;
-    font-size: 15px;
-    margin-top: 20px;
-    text-align: center;
-    line-height: 25px;
-    display: block;
-   text-decoration: none;
-   }
-   .signup-link:hover{
-    text-decoration: underline;
-   }
-   .form-wrap button:hover{
+}
+
+/* Estilos para a seção de registro */
+.register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-container {
     background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-container label {
+    font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="password"]:focus {
+    border-color: #7fbf7f;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #6a2c70; /* roxo escuro */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #b83b5e; /* roxo claro */
+}
+
+.signup-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+    color: #5fa35f;
+}
+
+#posting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#posting input[type="text"], #posting input[type="number"], #posting textarea {
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: 1px solid #DAE1F5;
+    background: #FFF; 
+    color: #545D7A; 
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+#posting input[type="submit"] {
+    border-radius: 5px;
+    background: #6a2c70; /* roxo escuro */
+    color: #FFF;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px; /* tamanho da fonte aumentado */
+    padding: 15px 75px; /* padding aumentado */
+    font-weight: 700;
+    border: 1px solid transparent;
+    margin-top: 30px;
+    line-height: 28px; /* line-height aumentado */
+    width: 100%;
+    max-width: 400px;
+}
+
+#posting input[type="submit"]:hover {
+    background-color: #b83b5e; /* roxo claro */
     color: #10182F;
-    border-color: #10182F;
-   
-   }
+    border-color: #6a2c70; /* roxo escuro */
+}
