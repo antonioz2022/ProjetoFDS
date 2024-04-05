@@ -1,33 +1,35 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="wrapper">
-    <h1>Post your pet!</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="input-box">
-            <input type="text" id="name" name="name" placeholder="Name">
-            <i class="bx bxs-user"></i>
+<div class="body-splat">
+    <div class="wrapper">
+        <h1>Post your pet!</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="text" id="name" name="name" placeholder="Name">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" id="species" name="species" placeholder="Species">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" id="breed" name="breed" placeholder="Breed">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div id="description" , class="input-box">
+                <textarea id="description" name="description" placeholder="Description"></textarea>
+                <i class="bx bxs-user"></i>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <div class="register-link">
+            <p><a href="{% url 'pet4you:home' %}">Home</a></p>
         </div>
-        <div class="input-box">
-            <input type="text" id="species" name="species" placeholder="Species">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="text" id="breed" name="breed" placeholder="Breed">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div id="description" , class="input-box">
-            <textarea id="description" name="description" placeholder="Description"></textarea>
-            <i class="bx bxs-user"></i>
-        </div>
-        <button type="submit" class="btn">Submit</button>
-    </form>
-    <div class="register-link">
-        <p><a href="{% url 'pet4you:home' %}">Home</a></p>
     </div>
 </div>
 {% endblock %}
