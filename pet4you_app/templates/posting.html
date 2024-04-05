@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
+<div class="body-splat">
 <div class="wrapper">
     <h1>Post your pet!</h1>
     <form method="POST">
@@ -29,5 +30,6 @@
     <div class="register-link">
         <p><a href="{% url 'pet4you:home' %}">Home</a></p>
     </div>
+</div>
 </div>
 {% endblock %}

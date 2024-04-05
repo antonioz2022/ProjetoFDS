@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
+
+<div class="body-splat">
 <div class="wrapper">
   <form method="POST">
     {% csrf_token %}
@@ -30,5 +32,6 @@
       <p>Dont have an account? <a href="{% url 'pet4you:authView' %}">Register</a></p>
     </div>
   </form>
+</div>
 </div>
 {% endblock %}

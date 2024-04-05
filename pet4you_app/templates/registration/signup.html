@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
+
+<div class="body-splat">
 <div class="wrapper" , style="width: 500px; height: 550px; margin-top: 105px;">
   <h1>Sign Up</h1>
   <form method="POST">
@@ -32,5 +34,6 @@
   <div class="register-link">
     <p>Already have an account? <a href="{% url 'pet4you:login' %}">Login</a></p>
   </div>
+</div>
 </div>
 {% endblock %}
