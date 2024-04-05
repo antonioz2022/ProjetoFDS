@@ -25,6 +25,17 @@ def createPost(request):
    else:
        return render(request, 'posting.html')
 
+def listPets(request):
+    # Supondo que você tenha um sistema de autenticação e tenha obtido o usuário logado
+    user = request.user
+    
+    # Obtendo todos os pets anunciados pelo usuário
+    pets = Pet.objects.filter(owner=user)
+    
+    # Passando os pets para o template
+    return render(request, 'list.html', {'pets': pets})
+
+
 def authView(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST or None)
