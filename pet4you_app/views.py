@@ -6,6 +6,8 @@ from django.shortcuts import redirect
 from .models import Pet
 from django.contrib import messages
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .forms import PetForm
 
 
 
@@ -19,20 +21,14 @@ def createPost(request):
        description = request.POST.get('description')
        owner = request.user
        pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo='',created_at='',owner=owner)
-       #messages.success(request, 'Form submitted successfully!')
        pet.save()
        return redirect("pet4you:home")
    else:
        return render(request, 'posting.html')
 
 def listPets(request):
-    # Supondo que você tenha um sistema de autenticação e tenha obtido o usuário logado
-    user = request.user
-    
-    # Obtendo todos os pets anunciados pelo usuário
+    user = request.user 
     pets = Pet.objects.filter(owner=user)
-    
-    # Passando os pets para o template
     return render(request, 'list.html', {'pets': pets})
 
 
@@ -62,3 +58,16 @@ def signup():
 
 def home(request):
     return render(request, "home.html", {})
+
+def edit_post(request, pet_id):  
+    pet = get_object_or_404(Pet, pk=pet_id)
+
+    if request.method == 'POST':
+        form = PetForm(request.POST, instance=pet)
+        if form.is_valid():
+            form.save()
+            return redirect('pet4you:home')
+    else:
+        form = PetForm(instance=pet)
+
+    return render(request, 'edit_post.html', {'form': form})
