@@ -9,8 +9,10 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 - Vinicius Cahu Tavares - vct@cesar.school
 - George Diogenes Pessoa Filho - gdpf@cesar.school
 
-## Jira
+## Prints
+# Jira
 ![Captura de tela 2024-03-17 193139](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/a52ef183-4fac-41d4-99d3-40e1e14187e6)
+
 
 ## Links
 [Link do app](https://pet4you.azurewebsites.net/)
