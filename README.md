@@ -14,6 +14,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 
 ## Links
 [Link do app](https://pet4you.azurewebsites.net/)
+</br>
 [Relato programação em dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 </br>
 [Link para o vídeo de protótipo (Lo-fi)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
