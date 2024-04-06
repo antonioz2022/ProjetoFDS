@@ -5,7 +5,7 @@
 <div class="body-splat">
 <div class="wrapper">
     <h1>Edit Pet</h1>
-    <form method="POST">
+    <form method="POST" class="formulario">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save Changes</button>
