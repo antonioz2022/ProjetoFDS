@@ -25,7 +25,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Video de demonstração](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
 </br>
-[Link do diagrama de atividades](https://lucid.app/lucidchart/94771115-53b6-4b48-841a-65e3ff16f60f/edit?view_items=R.Ifl6GEqOGg&invitationId=inv_05d3397d-9710-4485-a41a-f790c3bd1c31)
+[Link do diagrama de atividades](https://lucid.app/lucidchart/2b28226b-034c-4d20-97bc-a2a172ba7462/edit?viewport_loc=-678%2C-139%2C1645%2C746%2C0_0&invitationId=inv_8330fdb8-ef40-4393-a78a-ab86947f4c0f)
 </br>
 [Relato programação em dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 </br>
