@@ -34,7 +34,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Video de demonstração](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
 </br>
-[Link do diagrama de atividades](https://lucid.app/lucidchart/2b28226b-034c-4d20-97bc-a2a172ba7462/edit?viewport_loc=-705%2C-6%2C1377%2C624%2C0_0&invitationId=inv_8330fdb8-ef40-4393-a78a-ab86947f4c0f)
+([Diagrama de atividades](https://github.com/antonioz2022/ProjetoPET4YOU/files/14910618/Diagrama_de_Atividades_2.0.pdf)
 </br>
 [Relato programação em dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 </br>
@@ -43,9 +43,6 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 [Figma](https://www.figma.com/file/6fQ0l0kcamxhkVwwXCmDXM/PROT%C3%92TIPO?type=design&node-id=0-1&mode=design&t=RlXBIyNH6rh93kpj-0)
 </br>
 [Jira](https://cesar-vct.atlassian.net/jira/software/projects/FD/boards/4)
-</br>
-[Diagrama de atividades](https://github.com/antonioz2022/ProjetoPET4YOU/files/14910618/Diagrama_de_Atividades_2.0.pdf)
-</br>
 
 
 ## Licença
