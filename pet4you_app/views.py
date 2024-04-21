@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
 from .models import Pet
+from .models import Report
 from .forms import PetForm
 
 
@@ -34,6 +35,26 @@ def listPets(request):
     user = request.user 
     pets = Pet.objects.filter(owner=user)
     return render(request, 'list.html', {'pets': pets})
+
+def add_report(request, pet_id):
+    reports = Report.objects.all()
+    pet = get_object_or_404(Pet, pk=pet_id)
+    if(request.method == 'POST'):
+        text = request.POST.get('text')
+        reporter = request.user
+        report = Report(reporter=reporter,pet=pet,text=text)
+        report.save()
+        return redirect("pet4you:home")
+
+    else:
+        return render(request, 'report.html')
+def report_admin_view(request, report_id):
+    report = get_object_or_404(Report, pk=report_id)
+    return render(request, 'report_admin',{'report' : report})
+
+def list_reports(request):
+    reports = Report.objects.all()
+    return render(request, 'report_list', {'reports' : reports} )
 
 
 def login_view(request):
