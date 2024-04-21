@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Pet(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     species = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
