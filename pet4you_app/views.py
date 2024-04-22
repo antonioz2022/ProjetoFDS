@@ -42,12 +42,12 @@ def add_report(request, pet_id):
     if(request.method == 'POST'):
         text = request.POST.get('text')
         reporter = request.user
-        report = Report(reporter=reporter,pet=pet,text=text)
+        report = Report(reporter=reporter,pet=pet, text=text)
         report.save()
         return redirect("pet4you:home")
 
     else:
-        return render(request, 'report.html')
+        return render(request, 'report.html', {'pet': pet})
 def report_admin_view(request, report_id):
     report = get_object_or_404(Report, pk=report_id)
     return render(request, 'report_admin',{'report' : report})
@@ -104,3 +104,6 @@ def edit_post(request, pet_id):
         form = PetForm(instance=pet)
 
     return render(request, 'edit_post.html', {'form': form})
+
+
+

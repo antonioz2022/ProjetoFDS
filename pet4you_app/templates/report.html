@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="body-splat">
+    <div class="container">
+        <h1>Reportar</h1>
+        <form action="{% url 'pet4you:report' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="details">Detalhes do Relatório</label>
+                <textarea class="form-control" id="details" name="text" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Relatório</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

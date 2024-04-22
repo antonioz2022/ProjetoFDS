@@ -1,27 +1,30 @@
-{% extends "base.html" %}
-
-
 {% block body %}
 <div class="body-splat">
 <div style="text-align: center; color: white;">
     <h1>Pet4You</h1>
     <p>Encontre o seu novo melhor amigo.</p>
     {% if user.is_authenticated %}
-    <div style="margin-top: 20px;">
+    <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px;">
         <p>Hi {{ user.username }}!</p>  
-        <br><br>
         <form action="{% url 'pet4you:logout' %}" method="post" style="display: inline;">
             {% csrf_token %}
             <button type="submit" class="btn btn-custom">Logout</button>
         </form>
-        <br><br>
         <form action="{% url 'pet4you:posting' %}" method="get" style="display: inline;">
             <button type="submit" class="btn btn-custom">Postar Anúncio</button>
         </form>
-        <br><br>
         <form action="{% url 'pet4you:list' %}" method="get" style="display: inline;">
             <button type="submit" class="btn btn-custom">Meus Anúncios</button>
         </form>
+        {% if user.is_staff %}
+        <form action="{% url 'pet4you:report_list' %}" method="get" style="display: inline;">
+            <button type="submit" class="btn btn-custom">Denúncias</button>
+        </form>
+        {% else %}
+        <form action="{% url 'pet4you:report' %}" method="get" style="display: inline;">
+            <button type="submit" class="btn btn-custom">Reportar</button>
+        </form>
+        {% endif %}
     </div>
     {% else %}
     <p>You are not logged in</p>
