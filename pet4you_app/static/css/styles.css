@@ -3,7 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+
   }
+  #top-left {
+    position: absolute; /* Permite posicionar o elemento em qualquer lugar da página */
+    top: 0; /* Alinha o elemento com o topo da página */
+    left: 0; /* Alinha o elemento com o lado esquerdo da página */
+}
   .body-splat{
     display: flex;
     justify-content: center;
@@ -163,3 +169,17 @@
   #description::placeholder {
     color: rgba(255, 255, 255, 0.7);
   }
+.btn-custom {
+    background-color: orange; 
+    border: none; 
+    color: white; 
+    padding: 7px 14px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px; 
+    margin: 2px 2px; 
+    cursor: pointer;
+    border-radius: 4px;
+}
+
