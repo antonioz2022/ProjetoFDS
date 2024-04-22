@@ -2,14 +2,10 @@
 
 <header class="home-header">
   <div class="container">
-    <h1>Meu Site</h1>
+    <h1>Pet4You</h1> 
     <nav class="home-nav">
       <ul>
         {% if user.is_authenticated %}
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Contato</a></li>
         <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
         <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
         {% if user.is_staff %}

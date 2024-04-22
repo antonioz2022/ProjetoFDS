@@ -44,7 +44,7 @@
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: #ffffff;
     padding: 20px 45px 20px 20px;
   }
   .input-box input::placeholder{
@@ -176,7 +176,7 @@
 
 /* Header Styles */
 .home-header {
-  background-color: #333;
+  background-color: #004261;
   color: #fff;
   padding: 50px 0;
 }
@@ -217,7 +217,7 @@
 .banner .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #333;
+  background-color: #004261;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -248,7 +248,7 @@
 
 /* Footer Styles */
 .home-footer {
-  background-color: #333;
+  background-color: #004261;
   color: #fff;
   padding: 20px 0;
   text-align: center;
@@ -269,7 +269,7 @@
 .login-form {
     max-width: 400px;
     padding: 40px;
-    background-color: #fff;
+    background-color: #a0a0a0;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -300,7 +300,7 @@ button {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #004261;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -309,7 +309,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #868686;
 }
 
 .forgot-password {
