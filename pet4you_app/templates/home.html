@@ -1,35 +1,60 @@
-{% block body %}
-<div class="body-splat">
-<div style="text-align: center; color: white;">
-    {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-<div id="top-left">Pet4You</div>
-    {% if user.is_authenticated %}
-    <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px;">
-        <p>Hi {{ user.username }}!</p>  
-        <form action="{% url 'pet4you:logout' %}" method="post" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-custom">Logout</button>
-        </form>
-        <form action="{% url 'pet4you:posting' %}" method="get" style="display: inline;">
-            <button type="submit" class="btn btn-custom">Postar Anúncio</button>
-        </form>
-        <form action="{% url 'pet4you:list' %}" method="get" style="display: inline;">
-            <button type="submit" class="btn btn-custom">Meus Anúncios</button>
-        </form>
+{% extends "base.html" %} {% block body %}
+
+<header class="home-header">
+  <div class="container">
+    <h1>Meu Site</h1>
+    <nav class="home-nav">
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
+        <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
         {% if user.is_staff %}
-        <form action="{% url 'pet4you:report_list' %}" method="get" style="display: inline;">
-            <button type="submit" class="btn btn-custom">Denúncias</button>
-        </form>
+        <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
         {% endif %}
+        {% csrf_token %}
+        <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'pet4you:login' %}">Login</a></li>
+        <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="banner">
+  <div class="container">
+    <h2>Bem-vindo ao Nosso Site</h2>
+    <p>Conheça nossos produtos e serviços incríveis.</p>
+    <a href="#" class="btn">Saiba Mais</a>
+  </div>
+</section>
+<section class="content">
+  <div class="container">
+    <h2>Nossos Serviços</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Serviço 1</h3>
+        <p>Descrição do Serviço 1.</p>
+      </div>
+      <div class="service">
+        <h3>Serviço 2</h3>
+        <p>Descrição do Serviço 2.</p>
+      </div>
+      <div class="service">
+        <h3>Serviço 3</h3>
+        <p>Descrição do Serviço 3.</p>
+      </div>
     </div>
-    {% else %}
-    <p>You are not logged in</p>
-    <br><br>
-    <form action="{% url 'pet4you:login' %}" method="get" style="display: inline;">
-        <button type="submit" class="btn btn-custom">Log In</button>
-    </form>
-    {% endif %}
-</div>
-</div>
+  </div>
+</section>
+<footer class="home-footer">
+  <div class="container">
+    <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
 {% endblock %}
