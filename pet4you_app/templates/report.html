@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
 <div class="body-splat">
     <div class="container">
         <h1>Reportar</h1>
-        <form action="{% url 'pet4you:report' %}" method="post">
+        <form action="{% url 'pet4you:report' pet.id %}" method="post">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="details">Detalhes do Relatório</label>
-                <textarea class="form-control" id="details" name="text" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar Relatório</button>
+            <label for="report-text">Informe o motivo do relatório:</label><br>
+            <textarea id="report-text" name="text" rows="4" cols="50" required></textarea><br>
+            <input type="submit" value="Enviar Relatório">
         </form>
     </div>
 </div>

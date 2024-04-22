@@ -11,7 +11,7 @@ urlpatterns = [
     path("posting/", views.createPost, name="posting"),
     path("report_list/", views.list_reports, name="report_list"),
     path("report/<int:pet_id>/", views.add_report, name='report'),
-    path("report_admin/<int:report_id>/", views.report_admin_view, name='report_admin'),
+    path("report_admin/", views.report_admin_view, name='report_admin'),
     path("list/", views.listPets, name= "list"),
     path("edit/<int:pet_id>/", views.edit_post, name="edit_post"),
 ]

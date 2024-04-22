@@ -2,28 +2,29 @@
 {% block body %}
 
 <div class="body-splat">
-<div class="wrapper">
-    <h1>Your Pets</h1>
-    {% if pets %}
+    <div class="wrapper">
+        <h1>Your Pets</h1>
+        {% if pets %}
         <ul>
             {% for pet in pets %}
-                <li>
-                    <h3>{{ pet.name }}</h3>
-                    <p>Species: {{ pet.species }}</p>
-                    <p>Breed: {{ pet.breed }}</p>
-                    <p>Age: {{ pet.age }}</p>
-                    <p>Description: {{ pet.description }}</p>
-                    <a href="{% url 'pet4you:edit_post' pet.id %}">Editar</a>
-                    <a href="{% url 'pet4you:report' pet.id %}">Reportar</a>
-                </li>
+            <li>
+                <h3>{{ pet.name }}</h3>
+                <p>Species: {{ pet.species }}</p>
+                <p>Breed: {{ pet.breed }}</p>
+                <p>Age: {{ pet.age }}</p>
+                <p>Description: {{ pet.description }}</p>
+                <a href="{% url 'pet4you:edit_post' pet.id %}">Editar</a>
+                </br>
+                <a href="{% url 'pet4you:report' pet.id %}">Reportar</a>
+            </li>
             {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <p>No pets found.</p>
-    {% endif %}
-    <div class="register-link">
-        <p><a href="{% url 'pet4you:home' %}">Home</a></p>
+        {% endif %}
+        <div class="register-link">
+            <p><a href="{% url 'pet4you:home' %}">Home</a></p>
+        </div>
     </div>
-</div>
 </div>
 {% endblock %}
