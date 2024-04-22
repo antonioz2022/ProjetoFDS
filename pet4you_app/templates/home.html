@@ -20,10 +20,6 @@
         <form action="{% url 'pet4you:report_list' %}" method="get" style="display: inline;">
             <button type="submit" class="btn btn-custom">Denúncias</button>
         </form>
-        {% else %}
-        <form action="{% url 'pet4you:report' %}" method="get" style="display: inline;">
-            <button type="submit" class="btn btn-custom">Reportar</button>
-        </form>
         {% endif %}
     </div>
     {% else %}

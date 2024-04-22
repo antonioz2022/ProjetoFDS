@@ -1,29 +1,13 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<div class="body-splat">
-    <div class="container">
-        <h1>Lista de Denúncias</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID do Pet</th>
-                    <th>Nome do Usuário</th>
-                    <th>Detalhes da Denúncia</th>
-                    <th>Data da Denúncia</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in report %}
-                <tr>
-                    <td>{{ r.pet_id }}</td>
-                    <td>{{ r.user.username }}</td>
-                    <td>{{ r.details }}</td>
-                    <td>{{ r.date_reported }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+{% block body %}
+<div class="container">
+    <h1>Relatórios</h1>
+    {% for report in reports %}
+    <div class="report">
+        <h2>Relatório #{{ report.id }}</h2>
+        <p>{{ report.text }}</p>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
