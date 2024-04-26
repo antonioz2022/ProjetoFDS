@@ -32,6 +32,21 @@ def createPost(request):
        return redirect("pet4you:home")
    else:
        return render(request, 'posting.html')
+   
+def favoritar_pet(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    if(pet.favorited == False):
+        pet.favorited = True
+    else:
+        pet.favorited = False
+    pet.save()
+    return redirect('pet4you:list')
+
+def desfavoritar_pet(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    pet.favorited = False
+    pet.save()
+    return redirect('pet4you:favorite')
 
 def listPets(request):
     user = request.user 

@@ -15,4 +15,6 @@ urlpatterns = [
     path("list/", views.listPets, name= "list"),
     path("favorite/", views.listFavorites, name= "favorite"),
     path("edit/<int:pet_id>/", views.edit_post, name="edit_post"),
+    path('favoritar_pet/<int:pet_id>/', views.favoritar_pet, name='favoritar_pet'),
+    path('desfavoritar_pet/<int:pet_id>/', views.desfavoritar_pet, name='desfavoritar_pet'),
 ]

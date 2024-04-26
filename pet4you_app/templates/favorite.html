@@ -14,6 +14,11 @@
                 <p>Age: {{ pet.age }}</p>
                 <p>Description: {{ pet.description }}</p>
             </li>
+        </br>
+            <form method="post" action="{% url 'pet4you:desfavoritar_pet' pet.id %}">
+                {% csrf_token %}
+                    <button type="submit">Desfavoritar</button>
+            </form>
             {% endfor %}
         </ul>
         {% else %}
