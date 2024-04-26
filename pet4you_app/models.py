@@ -10,6 +10,7 @@ class Pet(models.Model):
     photo = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    favorited = models.BooleanField()
 
     def __str__(self):
         return self.name

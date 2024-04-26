@@ -13,5 +13,6 @@ urlpatterns = [
     path("report/<int:pet_id>/", views.add_report, name='report'),
     path("report_admin/", views.report_admin_view, name='report_admin'),
     path("list/", views.listPets, name= "list"),
+    path("favorite/", views.listFavorites, name= "favorite"),
     path("edit/<int:pet_id>/", views.edit_post, name="edit_post"),
 ]

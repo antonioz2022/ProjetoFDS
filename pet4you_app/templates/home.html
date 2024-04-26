@@ -8,6 +8,7 @@
         {% if user.is_authenticated %}
         <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
         <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
+        <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
         {% if user.is_staff %}
         <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
         {% endif %}

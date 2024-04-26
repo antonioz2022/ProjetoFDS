@@ -10,9 +10,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
+from django.db.models import Q
 from .models import Pet
 from .models import Report
 from .forms import PetForm
+
 
 
 
@@ -25,7 +27,7 @@ def createPost(request):
        age = request.POST.get('age')
        description = request.POST.get('description')
        owner = request.user
-       pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo='',created_at='',owner=owner)
+       pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo='',created_at='',owner=owner,favorited=False)
        pet.save()
        return redirect("pet4you:home")
    else:
@@ -35,6 +37,11 @@ def listPets(request):
     user = request.user 
     pets = Pet.objects.filter(owner=user)
     return render(request, 'list.html', {'pets': pets})
+
+def listFavorites(request):
+    user = request.user 
+    pets = Pet.objects.filter(~Q(owner=user), favorited=True)
+    return render(request, 'favorite.html', {'pets': pets})
 
 def add_report(request, pet_id):
     reports = Report.objects.all()
