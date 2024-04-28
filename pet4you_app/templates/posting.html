@@ -1,35 +1,47 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="body-splat">
-<div class="wrapper">
-    <h1>Post your pet!</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="input-box">
-            <input type="text" id="name" name="name" placeholder="Name">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="text" id="species" name="species" placeholder="Species">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="text" id="breed" name="breed" placeholder="Breed">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div id="description" , class="input-box">
-            <textarea id="description" name="description" placeholder="Description"></textarea>
-            <i class="bx bxs-user"></i>
-        </div>
-        <button type="submit" class="btn">Submit</button>
-    </form>
-    <div class="register-link">
-        <p><a href="{% url 'pet4you:home' %}">Home</a></p>
+<header class="home-header">
+    <div class="container">
+        <h1>Pet4You</h1>
+        <nav class="home-nav">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
+                <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
+                <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
+                {% endif %}
+                {% csrf_token %}
+                <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'pet4you:login' %}">Login</a></li>
+                <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
-</div>
+</header>
+<section class="content">
+<h1 style="text-align: center;">Post your pet!</h1>
+<div class="posting-container">
+    <form method="POST" class="posting-form">
+        {% csrf_token %}
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" placeholder="Name">
+        <label for="species">Espécie</label>
+        <input type="text" id="species" name="species" placeholder="Species">
+        <label for="breed">Raça</label>
+        <input type="text" id="breed" name="breed" placeholder="Breed">
+        <label for="age">Idade (Mêses)</label>
+        <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
+        <label for="description">Descrição</label>
+        <div id="description" , class="form-group">
+            <textarea id="description" name="description" placeholder="Description"></textarea>
+        </div>
+        <button type="submit" class="posting-submit">Submit</button>
+        <p style="text-align: center;"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
+    </form>
+</section>
 </div>
 {% endblock %}
