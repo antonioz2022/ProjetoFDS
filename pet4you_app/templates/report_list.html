@@ -1,13 +1,37 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-    <h1>Relatórios</h1>
-    {% for report in reports %}
-    <div class="report">
-        <h2>Relatório #{{ report.id }}</h2>
-        <p>{{ report.text }}</p>
+<header class="home-header">
+    <div class="container">
+        <h1>Pet4You</h1>
+        <nav class="home-nav">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
+                <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
+                <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
+                {% endif %}
+                {% csrf_token %}
+                <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'pet4you:login' %}">Login</a></li>
+                <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
-    {% endfor %}
+</header>
+<section class="content">
+<div class="container">
+        <h1>Relatórios</h1>
+        {% for report in reports %}
+        <div class="report">
+            <h2>Relatório #{{ report.id }}</h2>
+            <p>{{ report.text }}</p>
+        </div>
+        {% endfor %}
 </div>
+</section>
 {% endblock %}
