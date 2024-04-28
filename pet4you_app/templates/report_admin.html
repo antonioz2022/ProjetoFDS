@@ -23,15 +23,10 @@
         </nav>
     </div>
 </header>
-<section class="content"></section>
-<div class="container">
-    <h1>Relatórios</h1>
-    {% for report in reports %}
-    <div class="report">
-        <h2>Relatório #{{ report.id }}</h2>
-        <p>{{ report.text }}</p>
+<section class="content">
+    <div class="container">
+        <h1>Relatórios</h1>
+
     </div>
-    {% endfor %}
-</div>
 </section>
 {% endblock %}

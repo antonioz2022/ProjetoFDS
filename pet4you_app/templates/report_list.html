@@ -33,7 +33,7 @@
                 <th>Denunciante</th>
             </tr>
             {% for report in reports %}
-            <tr class="report-table" data-href="{% url 'pet4you:report_admin'%}">
+            <tr class="report-table" data-href="{% url 'pet4you:report_admin' report.id%}">
                 <td>{{ report.id }}</td>
                 <td>{{ report.pet.id }}</td>
                 <td>{{ report.pet.name }}</td>
