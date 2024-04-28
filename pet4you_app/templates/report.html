@@ -1,15 +1,38 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="body-splat">
+<header class="home-header">
     <div class="container">
+        <h1>Pet4You</h1>
+        <nav class="home-nav">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
+                <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
+                <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
+                {% endif %}
+                {% csrf_token %}
+                <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'pet4you:login' %}">Login</a></li>
+                <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+<section class="content">
+    <div style="align-items: center; display: flex; flex-direction: column; margin: 20px auto;">
         <h1>Reportar</h1>
         <form action="{% url 'pet4you:report' pet.id %}" method="post">
             {% csrf_token %}
             <label for="report-text">Informe o motivo do relatório:</label><br>
-            <textarea id="report-text" name="text" rows="4" cols="50" required></textarea><br>
-            <input type="submit" value="Enviar Relatório">
+            <textarea id="description" name="text" rows="4" cols="50" required></textarea><br>
+
+            <input class="button-2" type="submit" value="Enviar Relatório">
         </form>
     </div>
-</div>
+</section>
 {% endblock %}
