@@ -385,3 +385,15 @@
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
+.button-2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #004261;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

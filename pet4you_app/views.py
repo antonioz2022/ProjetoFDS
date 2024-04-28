@@ -26,8 +26,9 @@ def createPost(request):
        breed = request.POST.get('breed')
        age = request.POST.get('age')
        description = request.POST.get('description')
+       photo = request.POST.get('photo')
        owner = request.user
-       pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo='',created_at='',owner=owner,favorited=False)
+       pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo=photo,created_at='',owner=owner,favorited=False)
        pet.save()
        return redirect("pet4you:home")
    else:
