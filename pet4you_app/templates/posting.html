@@ -28,7 +28,7 @@
         <form method="POST">
             {% csrf_token %}
             <div class="image-photo-container">
-                <div class="Image-container" id="imageContainer">
+                <div class="image-container" id="imageContainer">
                     {% load static %}
                     <img id="previewImage" src="{% static 'css/placeholder.jpg' %}" alt="Preview Image">
                 </div>

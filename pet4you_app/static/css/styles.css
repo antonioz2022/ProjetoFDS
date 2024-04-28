@@ -376,13 +376,12 @@
 }
 
 .image-container {
-  width: 300px;
-  /* Set the width of the container */
+  /* Set the width of the container  */
 
   /* Allow the height to adjust based on the image aspect ratio */
   border: 1px solid #ccc;
   /* Add a border for visual separation (optional) */
-  border-radius: 8px;
+  border-radius: 200px;
   /* Add rounded corners for visual appeal (optional) */
   overflow: hidden;
   /* Ensure that the image does not overflow the container */
@@ -392,11 +391,10 @@
 
 .posting-container img {
   width: 700px;
-  height: 350px;
-  max-width: 110%;
+  height: 320px;
+  max-width: 100%;
   max-height: 50%;
   display: block;
-  border-radius: 200px;
   background-color: #fff;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
 
