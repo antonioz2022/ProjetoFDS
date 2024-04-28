@@ -33,35 +33,33 @@
                     <img id="previewImage" src="{% static 'css/placeholder.jpg' %}" alt="Preview Image">
                 </div>
                 <div class="photo-input">
-                    <div>
-                        <label for="photo">Foto</label>
-                        <input type="text" id="photo" name="photo" placeholder="Link da foto">
-                    </div>
+                    <label for="photo">Foto</label>
+                    <input type="text" id="photo" name="photo" placeholder="Link da foto">
                 </div>
                 <div class="two-column-form">
                     <div class="posting-form-input">
                         <label for="name">Nome</label>
-                        <input type="text" id="name" name="name" placeholder="Name">
+                        <input type="text" id="name" name="name" placeholder="Nome">
                     </div>
                     <div class="posting-form-input">
                         <label for="species">Espécie</label>
-                        <input type="text" id="species" name="species" placeholder="Species">
+                        <input type="text" id="species" name="species" placeholder="Espécie">
                     </div class="posting-form-input">
                     <div class="posting-form-input">
                         <label for="breed">Raça</label>
-                        <input type="text" id="breed" name="breed" placeholder="Breed">
+                        <input type="text" id="breed" name="breed" placeholder="Raça">
                     </div>
                     <div class="posting-form-input">
                         <label for="age">Idade (Mêses)</label>
-                        <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
+                        <input type="number" id="age" name="age" min="1" max="99" placeholder="Idade">
                     </div>
                 </div>
             </div>
             <label for="description">Descrição</label>
             <div>
-                <textarea id="description" name="description" placeholder="Type your description of the pet"></textarea>
+                <textarea id="description" name="description" placeholder="Digite uma descrição para o pet"></textarea>
             </div>
-            <button type="submit" class="posting-submit">Submit</button>
+            <button type="submit" class="posting-submit">Postar</button>
             <p style="text-align: center;"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
         </form>
 </section>
@@ -73,6 +71,17 @@
     const imageContainer = document.getElementById('imageContainer');
     const previewImage = document.getElementById('previewImage');
 
+    function isImage(url, callback) {
+        var img = new Image();
+        img.onload = function () {
+            callback(true); // Image loaded successfully
+        };
+        img.onerror = function () {
+            callback(false); // Image failed to load
+        };
+        img.src = url;
+    }
+
     // Add event listener to the input field to detect changes
     imageUrlInput.addEventListener('input', function () {
         // Get the value of the input field
@@ -82,6 +91,15 @@
         previewImage.src = imageUrl;
 
         // If the input field is empty, display a placeholder image
+
+        //
+
+        isImage(imageUrl, function (valid) {
+            if (!valid) {
+                previewImage.src = "{% static 'css/placeholder.jpg' %}";
+            }
+        });
+
         if (imageUrl === '') {
             previewImage.src = "{% static 'css/placeholder.jpg' %}"; // Replace 'placeholder.jpg' with your actual placeholder image
         }

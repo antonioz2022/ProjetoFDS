@@ -371,13 +371,14 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
+ 
   /* Add spacing between the image/photo input and the form */
 }
 
 .image-container {
   width: 300px;
   /* Set the width of the container */
- 
+
   /* Allow the height to adjust based on the image aspect ratio */
   border: 1px solid #ccc;
   /* Add a border for visual separation (optional) */
@@ -390,31 +391,33 @@
 }
 
 .posting-container img {
-  width: 750px;
+  width: 700px;
   height: 350px;
-  max-width: 95%;
+  max-width: 110%;
   max-height: 50%;
   display: block;
   border-radius: 200px;
   background-color: #fff;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
 
 
 }
 
 .photo-input {
-  position: absolute;
   text-align: center;
-  margin-left: 400px;
-  width: 23%;
-
+  position: relative;
+  left: 120px;
 }
 
-.photo-input input{
-  width: 100%;
+.photo-input label{
+  position: relative;
+  left: 90px;
+}
+.photo-input input {
+  width: 270%;
   padding: 10px;
   margin: 5px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 5px;
   box-sizing: border-box;
   /* Ensures padding and border are included in the total width */
@@ -430,7 +433,7 @@
 .posting-form-input {
   flex: 0 0 calc(50% - 10px);
   /* Each row takes up half of the container width minus some spacing */
-  margin: 115px 5px -50px;
+  margin: 115px 5px -70px;
   /* Add spacing between rows */
   box-sizing: border-box;
 }
