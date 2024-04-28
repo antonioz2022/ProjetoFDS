@@ -1,27 +1,29 @@
-{% extends "base.html" %} {% block body %}
+{% extends "base.html" %} 
+{% block body %}
 
 <header class="home-header">
   <div class="container">
-    <h1>Pet4You</h1> 
+    <h1 id="home-link">Pet4You</h1> 
     <nav class="home-nav">
       <ul>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
-        <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
-        <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
+        <li><a href="{% url 'pet4you:posting' %}" class="nav-link">Postar Anúncio</a></li>
+        <li><a href="{% url 'pet4you:list' %}" class="nav-link">Meus Anúncios</a></li>
+        <li><a href="{% url 'pet4you:favorite' %}" class="nav-link">Meus Favoritos</a></li>
         {% if user.is_staff %}
-        <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
+        <li><a href="{% url 'pet4you:report_list' %}" class="nav-link">Denúncias</a></li>
         {% endif %}
         {% csrf_token %}
-        <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
+        <li><a href="{% url 'pet4you:logout' %}" class="nav-link">Logout</a></li>
         {% else %}
-        <li><a href="{% url 'pet4you:login' %}">Login</a></li>
-        <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
+        <li><a href="{% url 'pet4you:login' %}" class="nav-link">Login</a></li>
+        <li><a href="{% url 'pet4you:register' %}" class="nav-link">Sign up</a></li>
         {% endif %}
       </ul>
     </nav>
   </div>
 </header>
+
 <section class="banner">
   <div class="container">
     <h2>Bem-vindo ao Pet4You!</h2>
@@ -29,6 +31,7 @@
     <a href="#" class="btn">Encontre seu pet</a>
   </div>
 </section>
+
 <section class="content">
   <div class="container">
     <h2>Pets para adoção</h2>
@@ -48,10 +51,29 @@
     </div>
   </div>
 </section>
+
 <footer class="home-footer">
   <div class="container">
     <p>&copy; 2024 Pet4You. Todos os direitos reservados.</p>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        link.classList.add('clicked');
+        document.querySelectorAll('.nav-link').forEach(otherLink => {
+            if (otherLink !== link) {
+                otherLink.classList.remove('clicked');
+            }
+        });
+    });
+  });
+
+  // Adiciona evento de clique ao título "Pet4You" para voltar para a home
+  document.getElementById('home-link').addEventListener('click', () => {
+    window.location.href = "{% url 'pet4you:home' %}";
+  });
+</script>
 
 {% endblock %}

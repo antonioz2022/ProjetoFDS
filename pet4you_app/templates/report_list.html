@@ -24,14 +24,32 @@
     </div>
 </header>
 <section class="content">
-<div class="container">
-        <h1>Relatórios</h1>
-        {% for report in reports %}
-        <div class="report">
-            <h2>Relatório #{{ report.id }}</h2>
-            <p>{{ report.text }}</p>
-        </div>
-        {% endfor %}
-</div>
+    <div class="table-container">
+        <table class="report-table">
+            <tr>
+                <th>ID da Denúncia</th>
+                <th>ID do Pet</th>
+                <th>Nome do Pet</th>
+                <th>Denunciante</th>
+            </tr>
+            {% for report in reports %}
+            <tr class="report-table" data-href="{% url 'pet4you:report_admin'%}">
+                <td>{{ report.id }}</td>
+                <td>{{ report.pet.id }}</td>
+                <td>{{ report.pet.name }}</td>
+                <td>{{ report.reporter.username}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('tr[data-href]').forEach(elem => {
+        elem.addEventListener("click", () => {
+            window.location.href = elem.dataset.href;
+        });
+    });
+});
+</script>
 {% endblock %}

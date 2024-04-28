@@ -524,3 +524,67 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+.report-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.report-table th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+}
+.report-table tr[data-href]:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-top: -60px;
+}
+
+.report-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.report-table th,
+.report-table td {
+  padding: 12px 15px;
+}
+
+.report-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.report-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.report-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+.nav-link {
+  font-size: 1em; /* Tamanho inicial do texto */
+  transition: font-size 0.3s ease; /* Adiciona uma transição suave para a mudança de tamanho da fonte */
+}
+
+.nav-link.clicked {
+  font-size: 1.2em; /* Tamanho do texto ao clicar */
+}
+
+.nav-link:hover {
+  font-size: 1.1em; /* Tamanho do texto ao passar o mouse */
+}
