@@ -1,32 +1,42 @@
-{% extends 'base.html' %}
-
-{% block body %}
+{% extends 'base.html' %} {% block body %}
 <header class="home-header">
-    <div class="container">
-        <h1>Pet4You</h1>
-        <nav class="home-nav">
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
-                <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
-                <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
-                {% endif %}
-                {% csrf_token %}
-                <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'pet4you:login' %}">Login</a></li>
-                <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
+  <div class="container">
+    <h1>Pet4You</h1>
+    <nav class="home-nav">
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
+        <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
+        <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
+        {% if user.is_staff %}
+        <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
+        {% endif %} {% csrf_token %}
+        <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'pet4you:login' %}">Login</a></li>
+        <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
 </header>
 <section class="content">
-    <div class="container">
-        <h1>Relatórios</h1>
-
+  <div class="report-container">
+    <div class="report-img">
+      {% load static %}
+      <img src="{% static 'css/placeholder.jpg' %}" alt="Preview Image" />
     </div>
+    <div class="report-info">
+      <div class="report">
+        {%for report in reports %}
+        <p><strong>Denunciante:</strong> {{ report.user }}</p>
+        <p><strong>Denúncia:</strong> {{ report.description }}</p>
+        <p><strong>Denunciado:</strong> {{ report.posting }}</p>
+        <p><strong>ID da da denúncia:</strong> {{ report.id }}</p>
+        <p><strong>ID do anúncio:</strong> {{ report.posting.id }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}

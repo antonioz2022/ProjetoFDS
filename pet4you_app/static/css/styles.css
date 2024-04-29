@@ -588,3 +588,33 @@
 .nav-link:hover {
   font-size: 1.1em; /* Tamanho do texto ao passar o mouse */
 }
+.report-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.report-container img{
+  width: 420px;
+  height: 420px;
+  max-width: 100%;
+  max-height: 50%;
+  display: block;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+.report-img{
+  border: 1px solid #ccc;
+  /* Add a border for visual separation (optional) */
+  border-radius: 1000px;
+  /* Add rounded corners for visual appeal (optional) */
+  overflow: hidden;
+  /* Ensure that the image does not overflow the container */
+  margin-bottom: 20px;
+}
