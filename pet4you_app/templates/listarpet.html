@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Pets</title>
+</head>
+<body>
+    <h1>Listagem de Pets</h1>
+    <ul>
+        {% for pet in pets %}
+            <li>{{ pet.name }} - {{ pet.species }} - {{ pet.breed }} - {{ pet.age }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

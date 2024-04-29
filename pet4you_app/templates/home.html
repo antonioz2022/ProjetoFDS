@@ -32,25 +32,23 @@
   </div>
 </section>
 
+<<!-- No seu template home.html -->
+
 <section class="content">
   <div class="container">
     <h2>Pets para adoção</h2>
     <div class="services">
+      {% for pet in pets_para_adocao %}
       <div class="service">
-        <h3>Pet 1</h3>
-        <p>Imagem/descrição do pet 1.</p>
+        <h3>{{ pet.name }}</h3>
+        <p>Descrição: {{ pet.description }}</p>
+        <!-- Aqui você pode adicionar a lógica para exibir a imagem do pet, se necessário -->
       </div>
-      <div class="service">
-        <h3>Pet 2</h3>
-        <p>Imagem/descrição do pet 2.</p>
-      </div>
-      <div class="service">
-        <h3>Pet 3</h3>
-        <p>Imagem/descrição do pet 3.</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+
 
 <footer class="home-footer">
   <div class="container">

@@ -10,7 +10,7 @@ class Pet(models.Model):
     photo = models.CharField(max_length=500, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    favorited = models.BooleanField()
+    favorited = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -23,3 +23,5 @@ class Report(models.Model):
 
     def __str__(self):
         return f"Report #{self.id} - {self.pet}"
+    
+
