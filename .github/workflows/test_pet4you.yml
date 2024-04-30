@@ -15,4 +15,5 @@ jobs:
         pip install --user psycopg2-binary
         pip install --user gunicorn
         pip install --user whitenoise
+        pip install --user selenium
         python manage.py test
