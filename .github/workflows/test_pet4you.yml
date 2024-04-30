@@ -4,6 +4,8 @@ on: push
 jobs:
   test_project:
     runs-on: ubuntu-latest
+    env:
+      TARGET_ENV: Dev
     steps:
     - uses: actions/checkout@v2
     - name: Run Django unit tests
