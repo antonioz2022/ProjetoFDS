@@ -40,9 +40,19 @@
     <div class="services">
       {% for pet in pets_para_adocao %}
       <div class="service">
+        <img src="{{pet.photo}}" alt="" height="100">
         <h3>{{ pet.name }}</h3>
         <p>Descrição: {{ pet.description }}</p>
-        <!-- Aqui você pode adicionar a lógica para exibir a imagem do pet, se necessário -->
+        <br><a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}">Editar</a></br>
+        <a class='button-2' href="{% url 'pet4you:report' pet.id %}">Reportar</a></br>
+         <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
+          {% csrf_token %}
+          {% if pet.favorited %}
+          <button type="submit" class="button-2">Desfavoritar</button>
+          {% else %}
+          <button type="submit" class="button-2">Favoritar</button>
+          {% endif %}
+          
       </div>
       {% endfor %}
     </div>

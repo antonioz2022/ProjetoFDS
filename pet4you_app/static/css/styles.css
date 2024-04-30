@@ -618,3 +618,7 @@
   /* Ensure that the image does not overflow the container */
   margin-bottom: 20px;
 }
+.row {
+  clear: both; /* Limpa ambos os lados para garantir que as fileiras sejam exibidas corretamente */
+  overflow: hidden; /* Evita que as fileiras sejam "invadidas" por elementos flutuantes */
+}
