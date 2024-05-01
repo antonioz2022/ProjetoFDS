@@ -29,7 +29,11 @@ def createPost(request):
         form = PetForm()
     return render(request, 'posting.html', {'form': form})
 
-   
+def deletar_pet(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    pet.delete()
+    return redirect('pet4you:home')
+
 def favoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
     if(pet.favorited == False):

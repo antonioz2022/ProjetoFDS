@@ -1,4 +1,27 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block body %}
+<style>
+.report-container {
+    position: relative;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+.bottom-left a {
+    background-color: #007BFF; /* Altere para a cor desejada */
+    color: white; /* Altere para a cor desejada */
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+</style>
 <header class="home-header">
   <div class="container">
     <h1>Pet4You</h1>
@@ -23,19 +46,14 @@
 <section class="content">
   <div class="report-container">
     <div class="report-img">
-      {% load static %}
       <img src="{% static 'css/placeholder.jpg' %}" alt="Preview Image" />
     </div>
     <div class="report-info">
       <div class="report">
-        {%for report in reports %}
-        <p><strong>Denunciante:</strong> {{ report.user }}</p>
-        <p><strong>Denúncia:</strong> {{ report.description }}</p>
-        <p><strong>Denunciado:</strong> {{ report.posting }}</p>
-        <p><strong>ID da da denúncia:</strong> {{ report.id }}</p>
-        <p><strong>ID do anúncio:</strong> {{ report.posting.id }}</p>
-        {% endfor %}
+        <p><strong>ID da Denúncia:</strong> {{ report.id }}</p>
+        <p><strong>Relatória da denúncia:</strong></p>{{ report.text}}
       </div>
+      <p class="bottom-left"><a href="{% url 'pet4you:home' %}">Voltar</a></p>
     </div>
   </div>
 </section>

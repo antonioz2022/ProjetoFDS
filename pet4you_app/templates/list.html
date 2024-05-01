@@ -15,9 +15,6 @@
                 <p>Description: {{ pet.description }}</p>
                 <img src="{{pet.photo}}" alt="" height="100"> <br>
                 <a href="{% url 'pet4you:edit_post' pet.id %}">Editar</a>
-                </br>
-                <a href="{% url 'pet4you:report' pet.id %}">Reportar</a>
-                </br>
                  <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
                     {% csrf_token %}
                     {% if pet.favorited %}
