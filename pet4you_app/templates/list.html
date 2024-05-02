@@ -1,37 +1,82 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% block body %}
 
-<div class="body-splat">
-    <div class="wrapper">
-        <h1>Your Pets</h1>
-        {% if pets %}
-        <ul>
-            {% for pet in pets %}
-            <li>
-                <h3>{{ pet.name }}</h3>
-                <p>Species: {{ pet.species }}</p>
-                <p>Breed: {{ pet.breed }}</p>
-                <p>Age: {{ pet.age }}</p>
-                <p>Description: {{ pet.description }}</p>
-                <img src="{{pet.photo}}" alt="" height="100"> <br>
-                <a href="{% url 'pet4you:edit_post' pet.id %}">Editar</a>
-                 <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
-                    {% csrf_token %}
-                    {% if pet.favorited %}
-                        <button type="submit" class="button-2">Desfavoritar</button>
-                    {% else %}
-                        <button type="submit" class="button-2">Favoritar</button>
-                    {% endif %}
-                </form>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No pets found.</p>
+<header class="home-header white-header">
+  <div class="container">
+    <h1 id="home-link">Pet4You</h1> 
+    <nav class="home-nav">
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'pet4you:posting' %}" class="nav-link">Postar Anúncio</a></li>
+        <li><a href="{% url 'pet4you:list' %}" class="nav-link">Meus Anúncios</a></li>
+        <li><a href="{% url 'pet4you:favorite' %}" class="nav-link">Meus Favoritos</a></li>
+        {% if user.is_staff %}
+        <li><a href="{% url 'pet4you:report_list' %}" class="nav-link">Denúncias</a></li>
         {% endif %}
-        <div class="register-link">
-            <p><a href="{% url 'pet4you:home' %}">Home</a></p>
-        </div>
+        {% csrf_token %}
+        <li><a href="{% url 'pet4you:logout' %}" class="nav-link">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'pet4you:login' %}" class="nav-link">Login</a></li>
+        <li><a href="{% url 'pet4you:register' %}" class="nav-link">Sign up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="banner">
+  <div class="container">
+    <h2>Bem-vindo ao Pet4You!</h2>
+    <p>Conheça nossos produtos e serviços incríveis.</p>
+    <a href="#" class="btn">Encontre seu pet</a>
+  </div>
+</section>
+
+<<!-- No seu template home.html -->
+
+<section class="content">
+  <div class="container">
+    <h2>Pets para adoção</h2>
+    <div class="services">
+      {% for pet in pets_para_adocao %}
+      <div class="service">
+        <img src="{{pet.photo}}" alt="" height="100">
+        <h3>{{ pet.name }}</h3>
+        <p>Descrição: {{ pet.description }}</p>
+        <br><a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}">Editar</a></br>
+        <a class='button-2' href="{% url 'pet4you:report' pet.id %}">Reportar</a></br>
+         <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
+          {% csrf_token %}
+          {% if pet.favorited %}
+          <button type="submit" class="button-2">Desfavoritar</button>
+          {% else %}
+          <button type="submit" class="button-2">Favoritar</button>
+          {% endif %}
+          
+      </div>
+      {% endfor %}
     </div>
-</div>
+  </div>
+</section>
+
+
+<footer class="home-footer">
+  <div class="container">
+    <p>&copy; 2024 Pet4You. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        link.classList.add('clicked');
+        document.querySelectorAll('.nav-link').forEach(otherLink => {
+            if (otherLink !== link) {
+                otherLink.classList.remove('clicked');
+            }
+        });
+    });
+  });
+</script>
+
 {% endblock %}
