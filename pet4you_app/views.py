@@ -41,7 +41,7 @@ def favoritar_pet(request, pet_id):
     else:
         pet.favorited = False
     pet.save()
-    return redirect('pet4you:list')
+    return redirect('pet4you:home')
 
 def desfavoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)

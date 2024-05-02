@@ -1,32 +1,119 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static %}
 {% block body %}
 
-<div class="body-splat">
-    <div class="wrapper">
-        <h1>Your Pets</h1>
-        {% if pets %}
-        <ul>
-            {% for pet in pets %}
-            <li>
+<style>
+  body {
+    background-color: #999999; /* Cor de fundo bege */
+  }
+
+  .banner {
+    background-color: #999999; /* Cor de fundo bege */
+  }
+
+  .container {
+    max-width: 800px; /* Define a largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza o contêiner na página */
+  }
+
+  .content {
+    display: flex; /* Faz com que os itens fiquem lado a lado */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha quando não há espaço suficiente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+  }
+
+  .pet-item {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    margin: 20px; /* Adiciona espaçamento entre os itens */
+    background-color: white; /* Define o fundo branco */
+    padding: 20px; /* Adiciona espaço interno */
+    border-radius: 8px; /* Adiciona cantos arredondados */
+    width: 200px; /* Define a largura dos contêineres dos animais */
+  }
+
+  .pet-item img {
+    width: 100px; /* Define o tamanho da imagem */
+    height: auto; /* Mantém a proporção */
+    margin-bottom: 10px; /* Adiciona espaçamento abaixo da imagem */
+  }
+</style>
+
+<header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+    <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
+    <nav class="home-nav" style="margin-left: auto;">
+      <ul style="display: flex; gap: 10px;">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a></li>
+        <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
+        <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a></li>
+        {% if user.is_staff %}
+        <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a></li>
+        {% endif %}
+        {% csrf_token %}
+        <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
+        <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="content">
+  <div class="container">
+    <h1 style="text-align: center;">Your Pets</h1>
+    {% if pets %}
+    <div class="content">
+        {% for pet in pets %}
+        <div class="pet-item">
+            <img src="{{pet.photo}}" alt="" height="100">
+            <div style="text-align: center;">
                 <h3>{{ pet.name }}</h3>
                 <p>Species: {{ pet.species }}</p>
                 <p>Breed: {{ pet.breed }}</p>
                 <p>Age: {{ pet.age }}</p>
                 <p>Description: {{ pet.description }}</p>
-            </li>
-        </br>
-            <form method="post" action="{% url 'pet4you:desfavoritar_pet' pet.id %}">
-                {% csrf_token %}
-                    <button type="submit">Desfavoritar</button>
-            </form>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No pets found.</p>
-        {% endif %}
-        <div class="register-link">
-            <p><a href="{% url 'pet4you:home' %}">Home</a></p>
+                <form method="post" action="{% url 'pet4you:desfavoritar_pet' pet.id %}">
+                    {% csrf_token %}
+                        <button type="submit">Desfavoritar</button>
+                </form>
+                <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
+
+                </form>
+            </div>
         </div>
+        {% endfor %}
     </div>
+    {% endif %}
+  </div>
+</section>
+
+<div class="register-link" style="display: flex; justify-content: center; align-items: center; height: 100px;">
+  <p style="margin: 0;"><a href="{% url 'pet4you:home' %}" style="text-decoration: none;">Voltar para a Home</a></p>
 </div>
+
+
+<footer class="home-footer">
+  <div class="container">
+    <p>&copy; 2024 Pet4You. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        link.classList.add('clicked');
+        document.querySelectorAll('.nav-link').forEach(otherLink => {
+            if (otherLink !== link) {
+                otherLink.classList.remove('clicked');
+            }
+        });
+    });
+  });
+</script>
+
 {% endblock %}
