@@ -35,7 +35,7 @@
 
   .pet-item img {
     width: 100px; /* Define o tamanho da imagem */
-    height: auto; /* Mantém a proporção */
+    height: 100px; /* Define o tamanho da imagem */
     margin-bottom: 0px; /* Adiciona espaçamento abaixo da imagem */
   }
 </style>
@@ -80,10 +80,10 @@
                 <p>Species: {{ pet.species }}</p>
                 <p>Breed: {{ pet.breed }}</p>
                 <p>Age: {{ pet.age }}</p>
-                <p>Description: {{ pet.description }}</p>
+                <p>Description: {{ pet.description }}</p> <br>
                 <form method="post" action="{% url 'pet4you:desfavoritar_pet' pet.id %}">
-                    {% csrf_token %}
-                        <button type="submit">Desfavoritar</button>
+                  {% csrf_token %}
+                  <button type="submit" style="background-color: #004261; color: white; border-radius: 5px; padding: 8px 15px;">Desfavoritar</button>
                 </form>
                 <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
 

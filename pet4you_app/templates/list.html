@@ -35,7 +35,7 @@
 
   .pet-item img {
     width: 100px; /* Define o tamanho da imagem */
-    height: auto; /* Mantém a proporção */
+    height: 100px; /* Define o tamanho da imagem */
     margin-bottom: 10px; /* Adiciona espaçamento abaixo da imagem */
   }
 
@@ -88,10 +88,10 @@
                 <p>Species: {{ pet.species }}</p>
                 <p>Breed: {{ pet.breed }}</p>
                 <p>Age: {{ pet.age }}</p>
-                <p>Description: {{ pet.description }}</p>
+                <p>Description: {{ pet.description }}</p><br>
                 <form method="post" action="{% url 'pet4you:edit_post' pet.id %}">
                   {% csrf_token %}
-                  <button type="submit">Editar</button>
+                  <button type="submit" style="background-color: #004261; color: white; border-radius: 5px; padding: 8px 15px;">Editar</button>
                 </form>
                 <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
 
