@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block body %}
-<header class="home-header">
-    <div class="container">
-        <h1>Pet4You</h1>
-        <nav class="home-nav">
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'pet4you:posting' %}">Postar Anúncio</a></li>
-                <li><a href="{% url 'pet4you:list' %}">Meus Anúncios</a></li>
-                <li><a href="{% url 'pet4you:favorite' %}">Meus Favoritos</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url 'pet4you:report_list' %}">Denúncias</a></li>
-                {% endif %}
-                {% csrf_token %}
-                <li><a href="{% url 'pet4you:logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'pet4you:login' %}">Login</a></li>
-                <li><a href="{% url 'pet4you:register' %}">Sign up</a></li>
-                {% endif %}
-            </ul>
-        </nav>
+<header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
+      <nav class="home-nav" style="margin-left: auto;">
+        <ul style="display: flex; gap: 10px;">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a></li>
+          <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
+          <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a></li>
+          {% if user.is_staff %}
+          <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a></li>
+          {% endif %}
+          {% csrf_token %}
+          <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
+          <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
+          {% endif %}
+        </ul>
+      </nav>
     </div>
-</header>
+  </header>
 <section class="content">
     <div class="table-container">
         <table class="report-table">
