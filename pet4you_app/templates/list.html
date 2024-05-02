@@ -43,7 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px; /* Adiciona margem inferior */
+    margin-bottom: 0px; /* Adiciona margem inferior */
   }
 </style>
 
@@ -73,6 +73,11 @@
 <section class="content">
   <div class="container">
     <h1 style="text-align: center;">Your Pets</h1>
+    <div class="register-link" style="display: flex; justify-content: center;">
+        <p style="margin: 20px 0;"><a href="{% url 'pet4you:home' %}" style="text-decoration: none;">Voltar para a Home</a></p>
+      </div>
+
+
     {% if pets %}
     <div class="content">
         {% for pet in pets %}
@@ -99,9 +104,7 @@
   </div>
 </section>
 
-<div class="register-link">
-  <p style="margin: 0;"><a href="{% url 'pet4you:home' %}" style="text-decoration: none;">Voltar para a Home</a></p>
-</div>
+
 
 <footer class="home-footer">
   <div class="container">

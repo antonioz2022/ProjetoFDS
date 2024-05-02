@@ -140,5 +140,6 @@ def listar_pets(request):
 
 
 def home(request):
-    pets_para_adocao = Pet.objects.all()  # Recupera todos os pets para adoção
+    user = request.user 
+    pets_para_adocao = Pet.objects.filter(~Q(owner=user))  # Recupera todos os pets para adoção
     return render(request, "home.html", {'pets_para_adocao': pets_para_adocao})
