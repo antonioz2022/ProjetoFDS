@@ -28,7 +28,7 @@
 <section class="content">
     <h1 style="text-align: center; margin-top: -20px;">Post your pet!</h1>
     <div class="posting-container">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="image-photo-container">
                 <div class="image-container" id="imageContainer">
@@ -36,8 +36,8 @@
                     <img id="previewImage" src="{% static 'css/placeholder.jpg' %}" alt="Preview Image">
                 </div>
                 <div class="photo-input">
-                    <label for="photo">Foto</label>
-                    <input type="text" id="photo" name="photo" placeholder="Link da foto">
+                    <label for="photo">Photo</label>
+                    <input type="url" id="photo" name="photo" value="{{ pet.photo }}">
                 </div>
                 <div class="two-column-form">
                     <div class="posting-form-input">
@@ -47,13 +47,13 @@
                     <div class="posting-form-input">
                         <label for="species">Espécie</label>
                         <input type="text" id="species" name="species" placeholder="Espécie">
-                    </div class="posting-form-input">
+                    </div>
                     <div class="posting-form-input">
                         <label for="breed">Raça</label>
                         <input type="text" id="breed" name="breed" placeholder="Raça">
                     </div>
                     <div class="posting-form-input">
-                        <label for="age">Idade (Mêses)</label>
+                        <label for="age">Idade (Meses)</label>
                         <input type="number" id="age" name="age" min="1" max="99" placeholder="Idade">
                     </div>
                 </div>
@@ -94,17 +94,14 @@
         previewImage.src = imageUrl;
 
         // If the input field is empty, display a placeholder image
-
-        //
-
-        isImage(imageUrl, function (valid) {
-            if (!valid) {
-                previewImage.src = "{% static 'css/placeholder.jpg' %}";
-            }
-        });
-
         if (imageUrl === '') {
             previewImage.src = "{% static 'css/placeholder.jpg' %}"; // Replace 'placeholder.jpg' with your actual placeholder image
+        } else {
+            isImage(imageUrl, function (valid) {
+                if (!valid) {
+                    previewImage.src = "{% static 'css/placeholder.jpg' %}";
+                }
+            });
         }
     });
 </script>

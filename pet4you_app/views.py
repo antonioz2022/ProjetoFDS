@@ -13,21 +13,25 @@ from django.contrib.auth import logout as auth_logout
 from django.db.models import Q
 from .models import Pet
 from .models import Report
-from .forms import PetForm
 
 
 
 
 def createPost(request):
-    if request.method == 'POST':
-        form = PetForm(request.POST)
-        if form.is_valid():
-            form.instance.owner = request.user
-            form.save()
-            return redirect('pet4you:home')  
-    else:
-        form = PetForm()
-    return render(request, 'posting.html', {'form': form})
+   p = Pet.objects.all()
+   if(request.method == 'POST'):
+       name = request.POST.get('name')
+       species = request.POST.get('species')
+       breed = request.POST.get('breed')
+       age = request.POST.get('age')
+       description = request.POST.get('description')
+       photo = request.POST.get('photo')
+       owner = request.user
+       pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo=photo,created_at='',owner=owner,favorited=False)
+       pet.save()
+       return redirect("pet4you:home")
+   else:
+       return render(request, 'posting.html')
 
 def favoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
@@ -114,19 +118,24 @@ def home(request):
     pets_para_adocao = Pet.objects.filter(favorited=False)  # Recupera todos os pets para adoção
     return render(request, "home.html", {'pets_para_adocao': pets_para_adocao})
 
-
-def edit_post(request, pet_id):  
+def edit_post(request, pet_id):
+    # Recupera o objeto Pet que será editado
     pet = get_object_or_404(Pet, pk=pet_id)
 
     if request.method == 'POST':
-        form = PetForm(request.POST, instance=pet)
-        if form.is_valid():
-            form.save()
-            return redirect('pet4you:home')
+        # Atualiza os campos do objeto com os novos valores
+        pet.name = request.POST.get('name')
+        pet.species = request.POST.get('species')
+        pet.breed = request.POST.get('breed')
+        pet.age = request.POST.get('age')
+        pet.description = request.POST.get('description')
+        pet.photo = request.POST.get('photo')
+        # Salva as mudanças no banco de dados
+        pet.save()
+        return redirect("pet4you:home")
     else:
-        form = PetForm(instance=pet)
-
-    return render(request, 'edit_post.html', {'form': form})
+        # Renderiza o template de edição com os dados atuais do pet
+        return render(request, 'edit_post.html', {'pet': pet})
 
 
 
