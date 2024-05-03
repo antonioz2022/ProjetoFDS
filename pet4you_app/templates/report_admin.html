@@ -22,34 +22,12 @@
     cursor: pointer;
 }
 </style>
-<header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
-  <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-    <a href="{% url 'pet4you:home' %}">
-      <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
-    </a>
-    <nav class="home-nav" style="margin-left: auto;">
-      <ul style="display: flex; gap: 10px;">
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a></li>
-        <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
-        <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a></li>
-        {% if user.is_staff %}
-        <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a></li>
-        {% endif %}
-        {% csrf_token %}
-        <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
-        {% else %}
-        <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
-        <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-  </div>
-</header>
+
+<!-- Seu código HTML existente -->
 <section class="content">
   <div class="report-container">
     <div class="report-img">
-      <img src="{% static 'css/placeholder.jpg' %}" alt="Preview Image" />
+      <img src="{{ pet.photo }}" alt="Preview Image" />
     </div>
     <div class="report-info">
       <div class="report">

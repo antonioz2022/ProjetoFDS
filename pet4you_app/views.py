@@ -65,10 +65,13 @@ def add_report(request, pet_id):
         return redirect("pet4you:home")
     else:
         return render(request, 'report.html', {'pet': pet})
-    
+
 def report_admin_view(request, report_id):
     report = get_object_or_404(Report, pk=report_id)
-    return render(request, 'report_admin.html',{'report' : report})
+    pet = report.pet
+    return render(request, 'report_admin.html', {'report': report, 'pet': pet})
+
+
 
 def list_reports(request):
     reports = Report.objects.all()
