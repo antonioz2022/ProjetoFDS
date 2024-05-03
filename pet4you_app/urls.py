@@ -18,7 +18,7 @@ urlpatterns = [
     path('favoritar_pet/<int:pet_id>/', views.favoritar_pet, name='favoritar_pet'),
     path('desfavoritar_pet/<int:pet_id>/', views.desfavoritar_pet, name='desfavoritar_pet'),
     path('listar_pets/', views.listar_pets, name='listar_pets'),
-    path('pet/<int:pet_id>/delete/', views.deletar_pet, name='deletar_pet'),
+
 
 
     

@@ -3,7 +3,9 @@
 {% block body %}
 <header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-      <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
+      <a href="{% url 'pet4you:home' %}">
+        <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
+      </a>
       <nav class="home-nav" style="margin-left: auto;">
         <ul style="display: flex; gap: 10px;">
           {% if user.is_authenticated %}

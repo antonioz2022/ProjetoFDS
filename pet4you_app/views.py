@@ -29,11 +29,6 @@ def createPost(request):
         form = PetForm()
     return render(request, 'posting.html', {'form': form})
 
-def deletar_pet(request, pet_id):
-    pet = get_object_or_404(Pet, id=pet_id)
-    pet.delete()
-    return redirect('pet4you:home')
-
 def favoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
     if(pet.favorited == False):
@@ -56,7 +51,7 @@ def listPets(request):
 
 def listFavorites(request):
     user = request.user 
-    pets = Pet.objects.filter(~Q(owner=user), favorited=True)
+    pets = Pet.objects.filter(favorited=True)
     return render(request, 'favorite.html', {'pets': pets})
 
 def add_report(request, pet_id):
@@ -138,8 +133,3 @@ def listar_pets(request):
     return render(request, 'listarpet.html', {'pets': pets})
 
 
-
-def home(request):
-    user = request.user 
-    pets_para_adocao = Pet.objects.filter(~Q(owner=user))  # Recupera todos os pets para adoção
-    return render(request, "home.html", {'pets_para_adocao': pets_para_adocao})
