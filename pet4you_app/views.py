@@ -135,4 +135,15 @@ def listar_pets(request):
     pets = Pet.objects.all()
     return render(request, 'listarpet.html', {'pets': pets})
 
+def delete_post(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+
+    # Verifica se o usuário é o dono do pet antes de permitir a exclusão
+    if request.user == pet.owner:
+        pet.delete()
+        # Redireciona de volta para a página inicial ou outra página apropriada
+        return redirect('pet4you:home')
+    else:
+        # Redireciona para uma página de erro ou mostra uma mensagem de erro
+        return redirect('pet4you:home')  # Redireciona para a home por padrão
 
