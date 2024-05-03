@@ -7,13 +7,24 @@ jobs:
     env:
       TARGET_ENV: Dev
     steps:
-    - uses: actions/checkout@v2
-    - name: Run Django unit tests
-      run: |
-        pip install --user django
-        pip install --user python-dotenv
-        pip install --user psycopg2-binary
-        pip install --user gunicorn
-        pip install --user whitenoise
-        pip install --user selenium
-        python manage.py test
+      - name: Install dependencies
+        run: | 
+          pip install -r requirements.txt
+          npm ci
+
+      - name: Run local server
+        run: |
+          python manage.py migrate
+          python manage.py runserver &
+          sleep 5
+          npx cypress run    
+      
+      - name: Cleaning testing files
+        run: |
+          rm .env
+          rm db.sqlite3
+          rm cypress.config.js
+          rm package-lock.json
+          rm package.json
+          rm -rf cypress
+          rm -rf node_modules
