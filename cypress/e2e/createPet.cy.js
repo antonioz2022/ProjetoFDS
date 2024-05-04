@@ -9,7 +9,7 @@ describe('test suite 1', () => {
         cy.get('#photo').type('https://www.petz.com.br/blog/wp-content/uploads/2021/04/raca-de-cachorro-docil-2.jpg')
         cy.get('#name').type('Tobi')
         cy.get('#species').type('Cachorro')
-        cy.get('#breed').type('Golden R')
+        cy.get('#breed').type('Golden')
         cy.get('#age').type('3')
         cy.get('#description').type('Muito brincalhão!')
         cy.get('.posting-submit').click()
