@@ -2,8 +2,8 @@ describe('test suite 1', () => {
     it('Pet criado com sucesso', () => {
         cy.visit('/');
         cy.get(':nth-child(1) > .nav-link').click()
-        cy.get('#username').type('anton')
-        cy.get('#password').type('123456')
+        cy.get('#username').type('antonie@1234')
+        cy.get('#password').type('pass@12345')
         cy.get('button').click()
         cy.visit('/pet4you_app/posting')
         cy.get('#photo').type('https://www.petz.com.br/blog/wp-content/uploads/2021/04/raca-de-cachorro-docil-2.jpg')
