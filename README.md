@@ -49,7 +49,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Jira](https://cesar-vct.atlassian.net/jira/software/projects/FD/boards/4)
 </br>
-[Vídeo demonstração (Entrega 3)](https://drive.google.com/file/d/13H8vYiELsR7vVFkyCrwYYz2pcRVKrZDn/view?usp=sharing)
+[Vídeo demonstração da aplicação em uso (Entrega 3)](https://drive.google.com/file/d/13H8vYiELsR7vVFkyCrwYYz2pcRVKrZDn/view?usp=sharing)
 </br>
 [Vídeo protótipo de baixa (Entrega 3)](https://drive.google.com/file/d/11NCHewJHb13nGSothLuZdSU_Ue_vnBxS/view?usp=sharing)
 </br>
