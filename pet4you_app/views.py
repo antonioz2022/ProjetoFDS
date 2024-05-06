@@ -156,3 +156,4 @@ def delete_post(request, pet_id):
         # Redireciona para uma página de erro ou mostra uma mensagem de erro
         return redirect('pet4you:home')  # Redireciona para a home por padrão
 
+    
