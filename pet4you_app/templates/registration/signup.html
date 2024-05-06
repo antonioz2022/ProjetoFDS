@@ -1,39 +1,37 @@
 {% extends "base.html" %}
 {% block body %}
+<div class="login-container">
+  <div class="login-form" style="transform: scale(0.80);">
+    <h2>Sign Up</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.username.label_tag }}
+        <small>{{ form.username.help_text }}</small>
+        {{ form.username }}
+        <i class="bx bxs-user"></i>
+      </div>
 
-<div class="body-splat">
-<div class="wrapper" , style="width: 500px; height: 550px; margin-top: 105px;">
-  <h1>Sign Up</h1>
-  <form method="POST">
-    {% csrf_token %}
-    <div class="input-box", style="margin-top: 0px;">
-      {{ form.username.label_tag }}
-      <p><small>{{ form.username.help_text }}</small></p>
-      {{ form.username }}
-      <i class="bx bxs-user"></i>
+      <div class="form-group">
+        <p>{{ form.password1.label_tag }}</p>
+        <small>{{ form.password1.help_text }}</small>
+        {{ form.password1 }}
+        <i class="bx bxs-lock"></i>
+      </div>
+
+      <div class="form-group">
+        <p>{{ form.password2.label_tag }}</p>
+        <small>{{ form.password2.help_text }}</small>
+        {{ form.password2 }}
+        <i class="bx bxs-lock"></i>
+      </div>
+      
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <div class="forgot-password">
+      <p>Ja tem uma conta ? <a href="{% url 'pet4you:login' %}">Login</a></p>
+      <p style="text-align: center;"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
     </div>
-
-    <p style="padding-top: 10px;">{{ form.password1.label_tag }}</p>
-    <p><small>{{ form.password1.help_text }}</small></p>
-
-    <div class="input-box", style="margin-top: 5px;">
-      {{ form.password1 }}
-      <i class="bx bxs-lock"></i>
-
-    </div>
-
-    <p style="margin-top: -20px;">{{ form.password2.label_tag }}</p>
-    <p><small>{{ form.password2.help_text }}</small></p>
-    <div class="input-box", style="margin-top: 5px;">
-      {{ form.password2 }}
-      <i class="bx bxs-lock"></i>
-    </div>
-    
-    <button type="submit" class="btn">Sign Up</button>
-  </form>
-  <div class="register-link">
-    <p>Already have an account? <a href="{% url 'pet4you:login' %}">Login</a></p>
   </div>
-</div>
 </div>
 {% endblock %}

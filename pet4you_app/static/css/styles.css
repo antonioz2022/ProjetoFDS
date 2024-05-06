@@ -1,165 +1,626 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-  .body-splat{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(img3.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-  .wrapper{
-    width: 420px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(9px);
-    color: #fff;
-    border-radius: 12px;
-    padding: 30px 40px;
-  }
-  .wrapper h1{
-    font-size: 36px;
-    text-align: center;
-  }
-  .wrapper .input-box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    
-    margin: 30px 0;
-  }
-  .input-box input{
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
-  }
-  .input-box input::placeholder{
-    color: #fff;
-  }
-  .input-box i{
-    position: absolute;
-    right: 20px;
-    top: 30%;
-    transform: translate(-50%);
-    font-size: 20px;
-  
-  }
-  .wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-  }
-  .remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 3px;
-  
-  }
-  .remember-forgot a{
-    color: #fff;
-    text-decoration: none;
-  
-  }
-  .remember-forgot a:hover{
-    text-decoration: underline;
-  }
-  .wrapper .btn{
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-  }
-  .wrapper .register-link{
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-  
-  }
-  .register-link p a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .register-link p a:hover{
-    text-decoration: underline;
-  }
-  .btn-custom {
-    background-color: #d9c680; 
-    color: white; 
-    border: none;
-    padding: 10px 20px;
-    text-align: center; 
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 16px; 
-    margin: 4px 2px; 
-    cursor: pointer; 
-    border-radius: 5px; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+
 }
 
-  #description {
-    width: 100%;
-    height: 100px; 
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 15px;
-    background-color: #333;
-    color: #fff;
-    resize: none; 
-    transition: border-color 0.3s ease;
-  }
-  #description textarea::placeholder {
-    padding: 10px;
-    color: #fff;
-  }
-  #description:focus {
-    border-color: #fff; 
-  
-  }
+.body-splat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(img5.jpeg) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
-  .formulario input{
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
-  }
-  .formulario input::placeholder{
-    color: #fff;
-  }
-  .formulario i{
-    position: absolute;
-    right: 20px;
-    top: 30%;
-    transform: translate(-50%);
-    font-size: 20px;
-  
-  }
+.wrapper {
+  width: 420px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(9px);
+  color: #fff;
+  border-radius: 12px;
+  padding: 30px 40px;
+}
 
-  #description::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+  color: #fff;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 30%;
+  transform: translate(-50%);
+  font-size: 20px;
+
+}
+
+.wrapper .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+}
+
+.remember-forgot label input {
+  accent-color: #fff;
+  margin-right: 3px;
+
+}
+
+.remember-forgot a {
+  color: #fff;
+  text-decoration: none;
+
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.wrapper .btn {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.wrapper .register-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+
+}
+
+.register-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+}
+
+.btn-custom {
+  background-color: #d9c680;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#description {
+  width: 100%;
+  height: 150px;
+  font-weight: 300;
+  font-size: 15px;
+  border-radius: 5px;
+  border-color: black;
+  padding: 5px;
+  border-width: 2px;
+  background-color: #005f5a;
+  color: #fff;
+  box-sizing: border-box;
+  resize: none;
+}
+
+#description textarea::placeholder {
+  padding: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+#description:focus {
+  border-color: #fff;
+
+}
+
+.formulario input {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+}
+
+.formulario input::placeholder {
+  color: #fff;
+}
+
+.formulario i {
+  position: absolute;
+  right: 20px;
+  top: 30%;
+  transform: translate(-50%);
+  font-size: 20px;
+
+}
+
+#description::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* NEW CSS */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20p;
+}
+
+/* Header Styles */
+.home-header {
+  background-color: #004261;
+  color: #fff;
+  padding: 50px 0;
+}
+
+.home-header h1 {
+  float: left;
+}
+
+.home-nav ul {
+  float: right;
+}
+
+.home-nav ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+
+.home-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Banner Styles */
+.banner {
+  background-color: #f4f4f4;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.banner h2 {
+  margin-bottom: 20px;
+}
+
+.banner p {
+  margin-bottom: 40px;
+}
+
+.banner .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #004261;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Content Styles */
+.content {
+  padding: 50px 0;
+
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.service {
+  flex-basis: calc(33.33% - 20px);
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service h3 {
+  margin-bottom: 10px;
+}
+
+/* Footer Styles */
+.home-footer {
+  background-color: #004261;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* NEW FORM */
+
+.login-container {
+  background: url(img5.jpeg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  max-width: 400px;
+  padding: 40px;
+  background-color: #a0a0a0;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #004261;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #868686;
+}
+
+.forgot-password {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* POSTING NEW */
+
+.posting-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 800px;
+
+}
+
+
+.image-photo-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+ 
+  /* Add spacing between the image/photo input and the form */
+}
+
+.image-container {
+  /* Set the width of the container  */
+
+  /* Allow the height to adjust based on the image aspect ratio */
+  border: 1px solid #ccc;
+  /* Add a border for visual separation (optional) */
+  border-radius: 200px;
+  /* Add rounded corners for visual appeal (optional) */
+  overflow: hidden;
+  /* Ensure that the image does not overflow the container */
+  margin-bottom: 20px;
+  /* Add spacing between the container and the form */
+}
+
+.posting-container img {
+  width: 700px;
+  height: 320px;
+  max-width: 100%;
+  max-height: 50%;
+  display: block;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+
+
+}
+
+.photo-input {
+  text-align: center;
+  position: relative;
+  left: 120px;
+}
+
+.photo-input label{
+  position: relative;
+  left: 90px;
+}
+.photo-input input {
+  width: 270%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the total width */
+  font-size: 16px;
+}
+
+.two-column-form {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow form rows to wrap to the next line */
+}
+
+.posting-form-input {
+  flex: 0 0 calc(50% - 10px);
+  /* Each row takes up half of the container width minus some spacing */
+  margin: 115px 5px -70px;
+  /* Add spacing between rows */
+  box-sizing: border-box;
+}
+
+.posting-form-input label {
+  display: block;
+  /* Display label as block element */
+  margin-bottom: 5px;
+  /* Add spacing below label */
+}
+
+.posting-form-input input {
+  width: 100%;
+  /* Input field takes up 100% of the row */
+  padding: 10px;
+  /* Add padding for better appearance */
+  box-sizing: border-box;
+  /* Ensure padding and border are included in the total width */
+}
+
+
+
+.posting-form {}
+
+
+
+/*INPUT*/
+.posting-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the total width */
+  font-size: 16px;
+}
+
+/* Hover effect */
+.posting-form input[type="text"]:hover {
+  border-color: #999;
+}
+
+/* Focus effect */
+.posting-form input[type="text"]:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+/* Placeholder text */
+.posting-form input[type="text"]::placeholder {
+  color: #999;
+}
+
+/* Autofill styles (for browsers that support it) */
+.posting-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+/*INPUT END*/
+
+.posting-submit {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.posting-submit:hover {
+  background-color: #45a049;
+}
+
+/*button*/
+
+.button-2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #004261;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.report-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.report-table th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+}
+.report-table tr[data-href]:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-top: -60px;
+}
+
+.report-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.report-table th,
+.report-table td {
+  padding: 12px 15px;
+}
+
+.report-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.report-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.report-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+.nav-link {
+  font-size: 1em; /* Tamanho inicial do texto */
+  transition: font-size 0.3s ease; /* Adiciona uma transição suave para a mudança de tamanho da fonte */
+}
+
+.nav-link.clicked {
+  font-size: 1.2em; /* Tamanho do texto ao clicar */
+}
+
+.nav-link:hover {
+  font-size: 1.1em; /* Tamanho do texto ao passar o mouse */
+}
+.report-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.report-container img{
+  width: 420px;
+  height: 420px;
+  max-width: 100%;
+  max-height: 50%;
+  display: block;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+.report-img{
+  border: 1px solid #ccc;
+  /* Add a border for visual separation (optional) */
+  border-radius: 1000px;
+  /* Add rounded corners for visual appeal (optional) */
+  overflow: hidden;
+  /* Ensure that the image does not overflow the container */
+  margin-bottom: 20px;
+}
+.row {
+  clear: both; /* Limpa ambos os lados para garantir que as fileiras sejam exibidas corretamente */
+  overflow: hidden; /* Evita que as fileiras sejam "invadidas" por elementos flutuantes */
+}

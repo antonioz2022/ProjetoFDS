@@ -1,35 +1,108 @@
 {% extends "base.html" %}
+{% load static %}
 {% block body %}
-<div class="body-splat">
-<div class="wrapper">
-    <h1>Post your pet!</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="input-box">
-            <input type="text" id="name" name="name" placeholder="Name">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="text" id="species" name="species" placeholder="Species">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="text" id="breed" name="breed" placeholder="Breed">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input type="number" id="age" name="age" min="1" max="99" placeholder="Age">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div id="description" , class="input-box">
-            <textarea id="description" name="description" placeholder="Description"></textarea>
-            <i class="bx bxs-user"></i>
-        </div>
-        <button type="submit" class="btn">Submit</button>
-    </form>
-    <div class="register-link">
-        <p><a href="{% url 'pet4you:home' %}">Home</a></p>
+<header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <a href="{% url 'pet4you:home' %}">
+        <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
+      </a>
+      <nav class="home-nav" style="margin-left: auto;">
+        <ul style="display: flex; gap: 10px;">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a></li>
+          <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
+          <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a></li>
+          {% if user.is_staff %}
+          <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a></li>
+          {% endif %}
+          {% csrf_token %}
+          <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
+          <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
+          {% endif %}
+        </ul>
+      </nav>
     </div>
+  </header>
+<section class="content">
+    <h1 style="text-align: center; margin-top: -20px;">Post your pet!</h1>
+    <div class="posting-container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="image-photo-container">
+                <div class="image-container" id="imageContainer">
+                    {% load static %}
+                    <img id="previewImage" src="{% static 'css/placeholder.jpg' %}" alt="Preview Image">
+                </div>
+                <div class="photo-input">
+                    <label for="photo">Photo</label>
+                    <input type="url" id="photo" name="photo" value="{{ pet.photo }}">
+                </div>
+                <div class="two-column-form">
+                    <div class="posting-form-input">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Nome">
+                    </div>
+                    <div class="posting-form-input">
+                        <label for="species">Espécie</label>
+                        <input type="text" id="species" name="species" placeholder="Espécie">
+                    </div>
+                    <div class="posting-form-input">
+                        <label for="breed">Raça</label>
+                        <input type="text" id="breed" name="breed" placeholder="Raça">
+                    </div>
+                    <div class="posting-form-input">
+                        <label for="age">Idade (Meses)</label>
+                        <input type="number" id="age" name="age" min="1" max="99" placeholder="Idade">
+                    </div>
+                </div>
+            </div>
+            <label for="description">Descrição</label>
+            <div>
+                <textarea id="description" name="description" placeholder="Digite uma descrição para o pet"></textarea>
+            </div>
+            <button type="submit" class="posting-submit">Postar</button>
+            <p style="text-align: center;"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
+        </form>
+</section>
 </div>
-</div>
+
+<script>
+    // Get references to the input field and image container
+    const imageUrlInput = document.getElementById('photo');
+    const imageContainer = document.getElementById('imageContainer');
+    const previewImage = document.getElementById('previewImage');
+
+    function isImage(url, callback) {
+        var img = new Image();
+        img.onload = function () {
+            callback(true); // Image loaded successfully
+        };
+        img.onerror = function () {
+            callback(false); // Image failed to load
+        };
+        img.src = url;
+    }
+
+    // Add event listener to the input field to detect changes
+    imageUrlInput.addEventListener('input', function () {
+        // Get the value of the input field
+        const imageUrl = this.value;
+
+        // Update the src attribute of the image with the entered URL
+        previewImage.src = imageUrl;
+
+        // If the input field is empty, display a placeholder image
+        if (imageUrl === '') {
+            previewImage.src = "{% static 'css/placeholder.jpg' %}"; // Replace 'placeholder.jpg' with your actual placeholder image
+        } else {
+            isImage(imageUrl, function (valid) {
+                if (!valid) {
+                    previewImage.src = "{% static 'css/placeholder.jpg' %}";
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}

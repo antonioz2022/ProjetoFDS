@@ -1,0 +1,73 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block body %}
+<style>
+.report-container {
+    position: relative;
+}
+
+/* Estilo para o botão de excluir */
+.btn-excluir {
+    background-color: #DC3545; /* Cor vermelha */
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px; /* Posiciona no canto direito */
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.bottom-left a {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+</style>
+
+<!-- Seu código HTML existente -->
+<section class="content">
+  <div class="report-container">
+    <div class="report-img">
+      <img src="{{ pet.photo }}" alt="Preview Image" />
+    </div>
+    <div class="report-info">
+      <div class="report">
+        <p><strong>ID da Denúncia:</strong> {{ report.id }}</p>
+        <p><strong>Relatória da denúncia:</strong></p>{{ report.text}}
+      </div>
+      <form id="delete-form" action="{% url 'pet4you:delete_post' pet.id %}" method="post" style="display: none;">
+        {% csrf_token %}
+      </form>
+      <button class="btn-excluir" onclick="confirmarExclusao()">Excluir Post</button> <!-- Botão de excluir -->
+      <p class="bottom-left"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Script para confirmar exclusão -->
+<script>
+function confirmarExclusao() {
+    if (confirm("Tem certeza que deseja excluir este post?")) {
+        document.getElementById('delete-form').submit(); // Envia o formulário de exclusão
+    }
+}
+</script>
+
+{% endblock %}

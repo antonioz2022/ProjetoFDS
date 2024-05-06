@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+<header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <a href="{% url 'pet4you:home' %}">
+        <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
+      </a>
+      <nav class="home-nav" style="margin-left: auto;">
+        <ul style="display: flex; gap: 10px;">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a></li>
+          <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
+          <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a></li>
+          {% if user.is_staff %}
+          <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a></li>
+          {% endif %}
+          {% csrf_token %}
+          <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
+          <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+<section class="content">
+    <div style="align-items: center; display: flex; flex-direction: column; margin: 20px auto;">
+        <h1>Reportar</h1>
+        <form action="{% url 'pet4you:report' pet.id %}" method="post">
+            {% csrf_token %}
+            <label for="report-text">Informe o motivo do relatório:</label><br>
+            <textarea id="description" name="text" rows="4" cols="50" required></textarea><br>
+
+            <input class="button-2" type="submit" value="Enviar Relatório">
+        </form>
+    </div>
+</section>
+{% endblock %}
