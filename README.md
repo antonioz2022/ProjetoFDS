@@ -11,7 +11,8 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 
 ## Prints
 ### Jira
-![Captura de tela 2024-04-06 173251](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/8920cf66-6b75-4ad0-8caa-eb2e49f05066)
+<img width="1427" alt="image" src="https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/a56e95e9-7435-4ce4-9496-3418d731bc4b">
+
 
 
 ![Captura de tela 2024-04-07 141434](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/2898eeff-8645-47b6-856b-98d395e52e2b)
