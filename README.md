@@ -20,7 +20,8 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 
 #### Issue/Bug Tracker:
 
-![image](https://github.com/antonioz2022/ProjetoPET4YOU/assets/144275472/2aacaa12-0e91-4a84-b316-d82f3ff1c08c)
+![image](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/731c11b2-3d5e-49b6-94d9-f0588fe0f742)
+
 
 
 
@@ -34,7 +35,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Video de demonstração](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
 </br>
-[Diagrama de atividades](https://github.com/antonioz2022/ProjetoPET4YOU/files/14910618/Diagrama_de_Atividades_2.0.pdf)
+[Diagrama de atividades](https://github.com/antonioz2022/ProjetoPET4YOU/files/15225865/diagrama_de_atividades_3a_entrega.pdf)
 </br>
 [Relato programação em dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 </br>
