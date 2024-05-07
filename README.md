@@ -35,7 +35,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Instruções de uso](https://docs.google.com/document/d/1ybGNQyFeuDRKDxlOfUbdjYDhnYqXxlAIQ2FQG86XLTk/edit?usp=sharing)
 </br>
-[Video de demonstração da aplicação em uso (Entrega 2](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
+[Video de demonstração da aplicação em uso (Entrega 2)](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
 </br>
 [Diagrama de atividades](https://github.com/antonioz2022/ProjetoPET4YOU/files/15225865/diagrama_de_atividades_3a_entrega.pdf)
 </br>
