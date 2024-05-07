@@ -35,13 +35,13 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Instruções de uso](https://docs.google.com/document/d/1ybGNQyFeuDRKDxlOfUbdjYDhnYqXxlAIQ2FQG86XLTk/edit?usp=sharing)
 </br>
-[Video de demonstração](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
+[Video de demonstração da aplicação em uso (Entrega 2](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
 </br>
 [Diagrama de atividades](https://github.com/antonioz2022/ProjetoPET4YOU/files/15225865/diagrama_de_atividades_3a_entrega.pdf)
 </br>
 [Relato programação em dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 </br>
-[Link para o vídeo de protótipo (Lo-fi)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
+[Link para o vídeo de protótipo (Lo-fi) (Entrega 2)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
 </br>
 [Link para o vídeo de testes E2E](https://drive.google.com/file/d/1oT_G7wpCm5boc7kReiQZREWzYVCipxGK/view?usp=sharing)
 </br>
@@ -51,7 +51,7 @@ O PET4YOU é uma aplicação web projetada para facilitar o processo de adoção
 </br>
 [Vídeo demonstração da aplicação em uso (Entrega 3)](https://drive.google.com/file/d/13H8vYiELsR7vVFkyCrwYYz2pcRVKrZDn/view?usp=sharing)
 </br>
-[Vídeo protótipo de baixa (Entrega 3)](https://drive.google.com/file/d/11NCHewJHb13nGSothLuZdSU_Ue_vnBxS/view?usp=sharing)
+[Link para o vídeo de protótipo (Lo-fi) (Entrega 3)](https://drive.google.com/file/d/11NCHewJHb13nGSothLuZdSU_Ue_vnBxS/view?usp=sharing)
 </br>
 
 
