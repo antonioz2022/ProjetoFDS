@@ -27,8 +27,29 @@ def createPost(request):
        description = request.POST.get('description')
        photo = request.POST.get('photo')
        owner = request.user
+       
+       #Validation:
+       errors = {}
+       if not photo:
+            errors['photo'] = 'Photo is required.'
+       if not name:
+            errors['name'] = 'Name is required.'
+       if not age:
+            errors['age'] = 'Age is required.'
+       if not breed:
+            errors['breed'] = 'Breed is required'
+       if not species:
+            errors['species'] = 'Species is required'
+       if age != '':
+           if int(age) > 99:
+             errors['age'] = 'Age has to be under 99'
+
+       if errors:
+            return render(request, 'posting.html', {'errors': errors})
+        
        pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo=photo,created_at='',owner=owner,favorited=False)
        pet.save()
+       messages.success(request, 'Pet created successfully.')
        return redirect("pet4you:home")
    else:
        return render(request, 'posting.html')
@@ -123,14 +144,40 @@ def edit_post(request, pet_id):
     pet = get_object_or_404(Pet, pk=pet_id)
 
     if request.method == 'POST':
-        # Atualiza os campos do objeto com os novos valores
-        pet.name = request.POST.get('name')
-        pet.species = request.POST.get('species')
-        pet.breed = request.POST.get('breed')
-        pet.age = request.POST.get('age')
-        pet.description = request.POST.get('description')
-        pet.photo = request.POST.get('photo')
-        # Salva as mudanças no banco de dados
+        name = request.POST.get('name')
+        species = request.POST.get('species')
+        breed = request.POST.get('breed')
+        age = request.POST.get('age')
+        description = request.POST.get('description')
+        photo = request.POST.get('photo')
+        owner = request.user
+        
+         #Validation:
+        errors = {}
+        if not photo:
+            errors['photo'] = 'Photo is required.'
+        if not name:
+            errors['name'] = 'Name is required.'
+        if not age:
+            errors['age'] = 'Age is required.'
+        if not breed:
+            errors['breed'] = 'Breed is required'
+        if not species:
+            errors['species'] = 'Species is required'
+        if age != '':
+           if int(age) > 99:
+             errors['age'] = 'Age has to be under 99'
+
+        if errors:
+            return render(request, 'edit_post.html', {'errors': errors, 'pet': pet})
+        
+        pet.name = name
+        pet.species = species
+        pet.breed = breed
+        pet.age = age
+        pet.description = description
+        pet.photo = photo
+        
         pet.save()
         return redirect("pet4you:home")
     else:
