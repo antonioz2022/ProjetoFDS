@@ -23,7 +23,8 @@
 ### GitHub
 
 #### Issue/Bug Tracker:
-![GitHub Issues](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/731c11b2-3d5e-49b6-94d9-f0588fe0f742)
+![Captura de tela 2024-06-02 205847](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/47c0c3cf-2f03-4e58-929c-b51deab76bee)
+
 
 ## 🔗 Links
 
