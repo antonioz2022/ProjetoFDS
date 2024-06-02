@@ -1,6 +1,5 @@
 describe('Admin pode checar reports', () => {
     beforeEach(() => {
-        // Login as admin before each test
         cy.createAdminUser();
 
         cy.visit('/');
@@ -9,6 +8,8 @@ describe('Admin pode checar reports', () => {
         cy.get('#password').type('123456')
         cy.get('button').click()
         cy.get('.banner > .container > h2').invoke('text').should('have.string', "Bem-vindo ao Pet4You!")
+
+
 
     });
 
@@ -28,7 +29,35 @@ describe('Admin pode checar reports', () => {
                     }
 
 
-                    cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                    cy.get('body').then($body => {
+                        if ($body.find('.services > :nth-child(1) [href*="/pet4you_app/report/"]').length > 0) {
+                            cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                        }
+                        else {
+                            cy.visit('/pet4you_app/posting');
+
+                            cy.get('#photo').type('https://www.petz.com.br/blog/wp-content/uploads/2021/04/raca-de-cachorro-docil-2.jpg')
+                            cy.get('#name').type('Rex');
+                            cy.get('#species').type('Cachorro');
+                            cy.get('#breed').type('Labrador');
+                            cy.get('#age').type('2');
+                            cy.get('#description').type('Um labrador muito brincalhão!');
+
+                            cy.get('.posting-submit').click();
+
+
+                            cy.get('.banner > .container > h2').invoke('text').should('have.string', "Bem-vindo ao Pet4You!")
+
+                            cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                        }
+                        cy.get('#description').type(new_report);
+                        cy.get('.button-2').click();
+
+                        cy.get(':nth-child(4) > .nav-link').click();
+
+                        cy.get('[data-href^="/pet4you_app/report_admin/"]').its('length').should('be.gt', initialCount);
+                    });
+
                     cy.get('#description').type(new_report);
                     cy.get('.button-2').click();
 
@@ -38,6 +67,35 @@ describe('Admin pode checar reports', () => {
                 });
             } else {
                 const initialCount = 0;
+
+                cy.get('body').then($body => {
+                    if ($body.find('.services > :nth-child(1) [href*="/pet4you_app/report/"]').length > 0) {
+                        cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                    }
+                    else {
+                        cy.visit('/pet4you_app/posting');
+
+                        cy.get('#photo').type('https://www.petz.com.br/blog/wp-content/uploads/2021/04/raca-de-cachorro-docil-2.jpg')
+                        cy.get('#name').type('Rex');
+                        cy.get('#species').type('Cachorro');
+                        cy.get('#breed').type('Labrador');
+                        cy.get('#age').type('2');
+                        cy.get('#description').type('Um labrador muito brincalhão!');
+
+                        cy.get('.posting-submit').click();
+
+
+                        cy.get('.banner > .container > h2').invoke('text').should('have.string', "Bem-vindo ao Pet4You!")
+
+                        cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                    }
+                    cy.get('#description').type(new_report);
+                    cy.get('.button-2').click();
+
+                    cy.get(':nth-child(4) > .nav-link').click();
+
+                    cy.get('[data-href^="/pet4you_app/report_admin/"]').its('length').should('be.gt', initialCount);
+                });
 
                 cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
                 cy.get('#description').type(new_report);
