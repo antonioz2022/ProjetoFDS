@@ -1,4 +1,4 @@
-describe('Admin can delete reports', () => {
+describe('Admin pode checar reports', () => {
     beforeEach(() => {
         // Login as admin before each test
         cy.createAdminUser();
