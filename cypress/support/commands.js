@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('createAdminUser', () => {
+    cy.request({
+      method: 'POST',
+      url: 'http://127.0.0.1:8000/pet4you_app/api/create_admin/',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      expect(response.body.status).to.be.oneOf(['admin_created', 'admin_exists']);
+    });
+  });

