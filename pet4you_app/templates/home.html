@@ -46,7 +46,21 @@
 
 <section class="content">
   <div class="container">
-    <h2>Confira os pets disponíveis para adoção</h2>
+    <h2>Confira os pets disponíveis para adoção:</h2>
+
+   
+    <form method="GET" class="filter-form">
+      <label for="id_species">Espécie:</label>
+      {{ form.species }}
+      <label for="id_breed">Raça:</label>
+      {{ form.breed }}
+      <label for="id_age">Idade:</label>
+      {{ form.age }}
+      <label for="id_name">Nome:</label>
+      {{ form.name }}
+      <button type="submit" class="filter-button">Filtrar</button>
+  </form>
+
     <div class="services">
       {% for pet in pets_para_adocao %}
       <div class="service">

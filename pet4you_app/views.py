@@ -17,6 +17,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
+from .forms import PetFilterForm
+
 
 
 @csrf_exempt
@@ -149,12 +151,30 @@ def logout(request):
     auth_logout(request)
     return redirect('home')
 
+
 def home(request):
-    pets_para_adocao = Pet.objects.filter(favorited=False)  # Recupera todos os pets para adoção
-    return render(request, "home.html", {'pets_para_adocao': pets_para_adocao})
+    form = PetFilterForm(request.GET or None)  
+
+    pets_para_adocao = Pet.objects.all()  
+
+    species = request.GET.get('species', '')
+    breed = request.GET.get('breed', '')
+    age = request.GET.get('age', '')
+    name = request.GET.get('name', '')  
+
+    if species:
+        pets_para_adocao = pets_para_adocao.filter(species=species)
+    if breed:
+        pets_para_adocao = pets_para_adocao.filter(breed__icontains=breed)
+    if age:
+        pets_para_adocao = pets_para_adocao.filter(age=age)
+    if name:  
+        pets_para_adocao = pets_para_adocao.filter(name__icontains=name)
+
+    return render(request, "home.html", {'pets_para_adocao': pets_para_adocao, 'form': form})
 
 def edit_post(request, pet_id):
-    # Recupera o objeto Pet que será editado
+  
     pet = get_object_or_404(Pet, pk=pet_id)
 
     if request.method == 'POST':
@@ -195,7 +215,6 @@ def edit_post(request, pet_id):
         pet.save()
         return redirect("pet4you:home")
     else:
-        # Renderiza o template de edição com os dados atuais do pet
         return render(request, 'edit_post.html', {'pet': pet})
 
 
@@ -208,13 +227,9 @@ def listar_pets(request):
 def delete_post(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
 
-    # Verifica se o usuário é o dono do pet antes de permitir a exclusão
     if request.user == pet.owner:
         pet.delete()
-        # Redireciona de volta para a página inicial ou outra página apropriada
         return redirect('pet4you:home')
     else:
-        # Redireciona para uma página de erro ou mostra uma mensagem de erro
-        return redirect('pet4you:home')  # Redireciona para a home por padrão
+        return redirect('pet4you:home') 
 
-    

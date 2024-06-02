@@ -624,3 +624,35 @@
   clear: both; /* Limpa ambos os lados para garantir que as fileiras sejam exibidas corretamente */
   overflow: hidden; /* Evita que as fileiras sejam "invadidas" por elementos flutuantes */
 }
+
+
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.filter-form label {
+  font-weight: bold;
+}
+
+.filter-form input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.filter-form button {
+  background-color: #004261;
+  color: #004261;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.filter-form button:hover {
+  background-color: #45a049;
+}
