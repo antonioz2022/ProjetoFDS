@@ -16,21 +16,26 @@ describe('Admin pode checar reports', () => {
 
     it('Deve exibir novos reports na listagem de reports do admin.', () => {
         cy.get(':nth-child(4) > .nav-link').click()
-        cy.get('[data-href^="/pet4you_app/report_admin/"]')
-            .its('length')
-            .then(initialCount => {
-                cy.get('[data-href^="/pet4you_app/report_admin/"] > :nth-child(1)').first().click()
-                cy.get('a').click()
+        cy.get('[data-href^="/pet4you_app/report_admin/"]').then($elements => {
+            const initialCount = $elements.length;
 
-                cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click()
-                cy.get('#description').type(new_report)
-                cy.get('.button-2').click()
+            if (initialCount > 0) {
+                cy.get('[data-href^="/pet4you_app/report_admin/"] > :nth-child(1)').first().click();
+                cy.get('a').click();
+            }
+            else {
+                cy.visit('/');
+            }
 
-                cy.get(':nth-child(4) > .nav-link').click()
-                cy.get('[data-href^="/pet4you_app/report_admin/"]')
-                    .its('length')
-                    .should('be.gt', initialCount);
-            });
+            cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click()
+            cy.get('#description').type(new_report)
+            cy.get('.button-2').click()
+
+            cy.get(':nth-child(4) > .nav-link').click()
+            cy.get('[data-href^="/pet4you_app/report_admin/"]')
+                .its('length')
+                .should('be.gt', initialCount);
+        });
     });
     it('Deve checar se o novo report possuí a descrição correta.', () => {
         cy.get(':nth-child(4) > .nav-link').click()
