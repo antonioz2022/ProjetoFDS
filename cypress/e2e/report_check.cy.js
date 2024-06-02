@@ -96,14 +96,6 @@ describe('Admin pode checar reports', () => {
 
                     cy.get('[data-href^="/pet4you_app/report_admin/"]').its('length').should('be.gt', initialCount);
                 });
-
-                cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
-                cy.get('#description').type(new_report);
-                cy.get('.button-2').click();
-
-                cy.get(':nth-child(4) > .nav-link').click();
-
-                cy.get('[data-href^="/pet4you_app/report_admin/"]').its('length').should('be.gt', initialCount);
             }
         });
     });
