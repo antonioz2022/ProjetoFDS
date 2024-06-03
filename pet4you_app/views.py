@@ -176,6 +176,7 @@ def register_view(request):
 
 def logout(request):
     auth_logout(request)
+    new_notification("Logout Realizado")
     return redirect('home')
 
 
