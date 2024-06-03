@@ -18,12 +18,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 from .forms import PetFilterForm
-from winotify import Notification
 from django.utils import timezone
 from datetime import timedelta
 import platform
 if platform.system() == "Windows":
     from winotify import Notification
+    import winreg
 else:
     Notification = None
 
