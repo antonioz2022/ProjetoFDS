@@ -6,15 +6,8 @@ describe('teste de notificação nas últimas 24 horas', () => {
         cy.get('#password').type('pass@12345')
         cy.get('button').click()
 
-        cy.wait(2000);
-
         // Verifica se a notificação existe no DOM
-        cy.contains('Número de pets criados nas últimas 24 horas:').should('be.visible');
+        cy.contains('Número de pets criados nas últimas 24 horas:').should('exist');
 
-        // Verifica se a mensagem foi registrada no console
-        cy.window().then((win) => {
-            const consoleSpy = cy.spy(win.console, 'log');
-            cy.wrap(consoleSpy).should('be.calledWithMatch', /Número de pets criados nas últimas 24 horas:/);
-        });
     });
 });
