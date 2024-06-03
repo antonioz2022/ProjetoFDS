@@ -231,15 +231,16 @@ def listar_pets(request):
     pets = Pet.objects.all()
     return render(request, 'listarpet.html', {'pets': pets})
 
+@login_required
 def delete_post(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
 
-    if request.user == pet.owner:
+    if request.user == pet.owner or request.user.is_superuser:
         pet.delete()
-        new_notification("Post deletado com sucesso")
         return redirect('pet4you:home')
     else:
-        return redirect('pet4you:home') 
+        return redirect('pet4you:home')
+
     
 def notify_new_pets_last_24_hours():
     now = timezone.now()
