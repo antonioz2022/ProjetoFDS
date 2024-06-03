@@ -18,9 +18,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 from .forms import PetFilterForm
+from winotify import Notification
+from django.utils import timezone
+from datetime import timedelta
 
 
-
+    
 @csrf_exempt
 @require_POST
 def create_admin_user(request):
@@ -65,7 +68,7 @@ def createPost(request):
         
        pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo=photo,created_at='',owner=owner,favorited=False)
        pet.save()
-       messages.success(request, 'Pet created successfully.')
+       new_notification("Post adicionado com sucesso!")
        return redirect("pet4you:home")
    else:
        return render(request, 'posting.html')
@@ -73,8 +76,10 @@ def createPost(request):
 def favoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
     if(pet.favorited == False):
+        new_notification("Post favoritado com sucesso")
         pet.favorited = True
     else:
+        new_notification("Post desfavoritado com sucesso")
         pet.favorited = False
     pet.save()
     return redirect('pet4you:home')
@@ -83,6 +88,7 @@ def desfavoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
     pet.favorited = False
     pet.save()
+    new_notification("Post desfavoritado com sucesso")
     return redirect('pet4you:favorite')
 
 def listPets(request):
@@ -103,6 +109,7 @@ def add_report(request, pet_id):
         reporter = request.user
         report = Report(reporter=reporter,pet=pet, text=text)
         report.save()
+        new_notification("Post reportado com sucesso")
         return redirect("pet4you:home")
     else:
         return render(request, 'report.html', {'pet': pet})
@@ -128,6 +135,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                notify_new_pets_last_24_hours()
                 return redirect('home')  
     else:
         form = AuthenticationForm()
@@ -142,6 +150,7 @@ def register_view(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            notify_new_pets_last_24_hours()
             return redirect('home')  
     else:
         form = UserCreationForm()
@@ -213,12 +222,10 @@ def edit_post(request, pet_id):
         pet.photo = photo
         
         pet.save()
+        new_notification("Post editado com sucesso")
         return redirect("pet4you:home")
     else:
         return render(request, 'edit_post.html', {'pet': pet})
-
-
-
 
 def listar_pets(request):
     pets = Pet.objects.all()
@@ -229,7 +236,20 @@ def delete_post(request, pet_id):
 
     if request.user == pet.owner:
         pet.delete()
+        new_notification("Post deletado com sucesso")
         return redirect('pet4you:home')
     else:
         return redirect('pet4you:home') 
+    
+def notify_new_pets_last_24_hours():
+    now = timezone.now()
+    ultimas_24horas = now - timedelta(hours=24)
+    
+    new_pets_count = Pet.objects.filter(created_at__gte=ultimas_24horas).count()
+    
+    new_notification(f"Número de pets criados nas últimas 24 hours: {new_pets_count}")
+
+def new_notification(msg):
+    notificacao = Notification (app_id="Pet4You", title=msg)
+    notificacao.show()
 
