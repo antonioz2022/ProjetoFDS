@@ -31,8 +31,7 @@
 - [Aplicação Web](https://pet4you.azurewebsites.net/)
 - [Instruções de Uso](https://docs.google.com/document/d/1ybGNQyFeuDRKDxlOfUbdjYDhnYqXxlAIQ2FQG86XLTk/edit?usp=sharing)
 - [Vídeo de Demonstração (Entrega 2)](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
-- [Diagrama de Atividades]([diagrama_de_atividades_-_Pagina_1-1.pdf](https://github.com/user-attachments/files/15540761/diagrama_de_atividades_-_Pagina_1-1.pdf))
-
+- [Diagrama de Atividades](https://github.com/user-attachments/files/15540761/diagrama_de_atividades_-_Pagina_1-1.pdf)
 - [Relato de Programação em Dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 - [Protótipo Lo-fi (Entrega 2)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
 - [Vídeo de Testes E2E](https://drive.google.com/file/d/1oT_G7wpCm5boc7kReiQZREWzYVCipxGK/view?usp=sharing)
