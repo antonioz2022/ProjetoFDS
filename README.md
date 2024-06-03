@@ -14,14 +14,17 @@
 ## 📸 Prints
 
 ### Jira
-![Jira](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/a56e95e9-7435-4ce4-9496-3418d731bc4b)
+![Captura de tela 2024-06-02 205157](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/c5dfe912-8b01-44df-896c-de2be0c7c242)
 
-![Jira Board](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/2898eeff-8645-47b6-856b-98d395e52e2b)
+
+![Captura de tela 2024-06-02 205324](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/80ed4cd3-81eb-4fac-9e31-f6bb33d13979)
+
 
 ### GitHub
 
 #### Issue/Bug Tracker:
-![GitHub Issues](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/731c11b2-3d5e-49b6-94d9-f0588fe0f742)
+![Captura de tela 2024-06-02 205847](https://github.com/antonioz2022/ProjetoPET4YOU/assets/114232542/47c0c3cf-2f03-4e58-929c-b51deab76bee)
+
 
 ## 🔗 Links
 
