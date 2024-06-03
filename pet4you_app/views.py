@@ -28,24 +28,19 @@ else:
     Notification = None
 
 def new_notification(msg):
+    print(f"Notification: {msg}")
     if Notification:
-        notificacao = Notification (app_id="Pet4You", title=msg)
+        notificacao = Notification(app_id="Pet4You", title=msg)
         notificacao.show()
-    else:
-        print("Notificações não são suportadas neste sistema operacional")
-        
-def notify_new_pets_last_24_hours():
-    if Notification:
-        now = timezone.now()
-        ultimas_24horas = now - timedelta(hours=24)
-    
-        new_pets_count = Pet.objects.filter(created_at__gte=ultimas_24horas).count()
-    
-        new_notification(f"Número de pets criados nas últimas 24 hours: {new_pets_count}")
-    else:
-        print("Notificações não são suportadas neste sistema operacional")
-    
 
+
+def notify_new_pets_last_24_hours():
+    now = timezone.now()
+    ultimas_24horas = now - timedelta(hours=24)
+    new_pets_count = Pet.objects.filter(created_at__gte=ultimas_24horas).count()
+    print(f"Número de pets criados nas últimas 24 horas: {new_pets_count}")
+    if Notification:
+        new_notification(f"Número de pets criados nas últimas 24 horas: {new_pets_count}")
     
 @csrf_exempt
 @require_POST
@@ -263,9 +258,3 @@ def delete_post(request, pet_id):
         return redirect('pet4you:home')
     else:
         return redirect('pet4you:home')
-
-    
-
-
-
-
