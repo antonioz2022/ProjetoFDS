@@ -30,8 +30,8 @@ describe('Admin pode checar reports', () => {
 
 
                     cy.get('body').then($body => {
-                        if ($body.find('.services > :nth-child(1) [href*="/pet4you_app/report/"]').length > 0) {
-                            cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                        if ($body.find(':nth-child(1) > a.button-2').length > 0) {
+                            cy.get(':nth-child(1) > a.button-2').click();
                         }
                         else {
                             cy.visit('/pet4you_app/posting');
@@ -48,7 +48,7 @@ describe('Admin pode checar reports', () => {
 
                             cy.get('.banner > .container > h2').invoke('text').should('have.string', "Bem-vindo ao Pet4You!")
 
-                            cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                            cy.get(':nth-child(1) > a.button-2').click();
                         }
                         cy.get('#description').type(new_report);
                         cy.get('.button-2').click();
@@ -57,20 +57,13 @@ describe('Admin pode checar reports', () => {
 
                         cy.get('[data-href^="/pet4you_app/report_admin/"]').its('length').should('be.gt', initialCount);
                     });
-
-                    cy.get('#description').type(new_report);
-                    cy.get('.button-2').click();
-
-                    cy.get(':nth-child(4) > .nav-link').click();
-
-                    cy.get('[data-href^="/pet4you_app/report_admin/"]').its('length').should('be.gt', initialCount);
                 });
             } else {
                 const initialCount = 0;
 
                 cy.get('body').then($body => {
-                    if ($body.find('.services > :nth-child(1) [href*="/pet4you_app/report/"]').length > 0) {
-                        cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                    if ($body.find(':nth-child(1) > a.button-2').length > 0) {
+                        cy.get(':nth-child(1) > a.button-2').click();
                     }
                     else {
                         cy.visit('/pet4you_app/posting');
@@ -87,7 +80,7 @@ describe('Admin pode checar reports', () => {
 
                         cy.get('.banner > .container > h2').invoke('text').should('have.string', "Bem-vindo ao Pet4You!")
 
-                        cy.get('.services > :nth-child(1) [href*="/pet4you_app/report/"]').click();
+                        cy.get(':nth-child(1) > a.button-2 ').click();
                     }
                     cy.get('#description').type(new_report);
                     cy.get('.button-2').click();
