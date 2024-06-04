@@ -50,24 +50,17 @@
     <div class="report-info">
       <div class="report">
         <p><strong>ID da Denúncia:</strong> {{ report.id }}</p>
-        <p><strong>Relatória da denúncia:</strong></p>{{ report.text}}
+        <p><strong>Relatório da denúncia:</strong></p>{{ report.text }}
       </div>
-      <form id="delete-form" action="{% url 'pet4you:delete_post' pet.id %}" method="post" style="display: none;">
+      {% if user == pet.owner or user.is_superuser %}
+      <form id="delete-form" action="{% url 'pet4you:delete_post' pet.id %}" method="post">
         {% csrf_token %}
+        <button type="submit" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este post?')">Excluir Post</button>
       </form>
-      <button class="btn-excluir" onclick="confirmarExclusao()">Excluir Post</button> <!-- Botão de excluir -->
+      {% endif %}
       <p class="bottom-left"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
     </div>
   </div>
 </section>
-
-<!-- Script para confirmar exclusão -->
-<script>
-function confirmarExclusao() {
-    if (confirm("Tem certeza que deseja excluir este post?")) {
-        document.getElementById('delete-form').submit(); // Envia o formulário de exclusão
-    }
-}
-</script>
 
 {% endblock %}

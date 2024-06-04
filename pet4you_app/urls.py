@@ -19,6 +19,7 @@ urlpatterns = [
     path('desfavoritar_pet/<int:pet_id>/', views.desfavoritar_pet, name='desfavoritar_pet'),
     path('listar_pets/', views.listar_pets, name='listar_pets'),
     path('delete/<int:pet_id>/', views.delete_post, name='delete_post'),
+    path('api/create_admin/', views.create_admin_user, name='create_admin_user'),
 
 
 

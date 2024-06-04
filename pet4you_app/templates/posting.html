@@ -3,28 +3,32 @@
 {% block body %}
 <header class="home-header" style="height: 80px; display: flex; align-items: center; background-color: white;">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-      <a href="{% url 'pet4you:home' %}">
-        <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150" style="margin-right: 10px;">
-      </a>
-      <nav class="home-nav" style="margin-left: auto;">
-        <ul style="display: flex; gap: 10px;">
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a></li>
-          <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
-          <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a></li>
-          {% if user.is_staff %}
-          <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a></li>
-          {% endif %}
-          {% csrf_token %}
-          <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
-          {% else %}
-          <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
-          <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
-          {% endif %}
-        </ul>
-      </nav>
+        <a href="{% url 'pet4you:home' %}">
+            <img src="{% static 'css/icon-removebg.png' %}" alt="Logo" class="logo-icon" width="150" height="150"
+                style="margin-right: 10px;">
+        </a>
+        <nav class="home-nav" style="margin-left: auto;">
+            <ul style="display: flex; gap: 10px;">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'pet4you:posting' %}" class="nav-link" style="color: #004261;">Postar Anúncio</a>
+                </li>
+                <li><a href="{% url 'pet4you:list' %}" class="nav-link" style="color: #004261;">Meus Anúncios</a></li>
+                <li><a href="{% url 'pet4you:favorite' %}" class="nav-link" style="color: #004261;">Meus Favoritos</a>
+                </li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'pet4you:report_list' %}" class="nav-link" style="color: #004261;">Denúncias</a>
+                </li>
+                {% endif %}
+                {% csrf_token %}
+                <li><a href="{% url 'pet4you:logout' %}" class="nav-link" style="color: #004261;">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'pet4you:login' %}" class="nav-link" style="color: #004261;">Login</a></li>
+                <li><a href="{% url 'pet4you:register' %}" class="nav-link" style="color: #004261;">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
-  </header>
+</header>
 <section class="content">
     <h1 style="text-align: center; margin-top: -20px;">Post your pet!</h1>
     <div class="posting-container">
@@ -43,18 +47,30 @@
                     <div class="posting-form-input">
                         <label for="name">Nome</label>
                         <input type="text" id="name" name="name" placeholder="Nome">
+                        {% if errors.name %}
+                        <span style="color: red; font-size: smaller;">{{ errors.name }}</span><br>
+                        {% endif %}
                     </div>
                     <div class="posting-form-input">
                         <label for="species">Espécie</label>
                         <input type="text" id="species" name="species" placeholder="Espécie">
+                        {% if errors.species %}
+                        <span style="color: red; font-size: smaller;">{{ errors.species }}</span><br>
+                        {% endif %}
                     </div>
                     <div class="posting-form-input">
                         <label for="breed">Raça</label>
                         <input type="text" id="breed" name="breed" placeholder="Raça">
+                        {% if errors.breed %}
+                        <span style="color: red; font-size: smaller;">{{ errors.breed }}</span><br>
+                        {% endif %}
                     </div>
                     <div class="posting-form-input">
                         <label for="age">Idade (Meses)</label>
-                        <input type="number" id="age" name="age" min="1" max="99" placeholder="Idade">
+                        <input type="number" id="age" name="age" min="1" max="999" placeholder="Idade">
+                        {% if errors.age %}
+                        <span style="color: red; font-size: smaller;">{{ errors.age }}</span><br>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -62,11 +78,12 @@
             <div>
                 <textarea id="description" name="description" placeholder="Digite uma descrição para o pet"></textarea>
             </div>
-            <button type="submit" class="posting-submit">Postar</button>
+            <button type="submit" class="posting-submit" style="background-color: #003366; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s ease;">Postar</button>
+            
             <p style="text-align: center;"><a href="{% url 'pet4you:home' %}">Voltar para o início</a></p>
         </form>
+    </div>
 </section>
-</div>
 
 <script>
     // Get references to the input field and image container
@@ -103,6 +120,14 @@
                 }
             });
         }
+    });
+
+    const submitButton = document.querySelector('.posting-submit');
+    submitButton.addEventListener('mouseover', function() {
+        submitButton.style.backgroundColor = '#002244'; 
+    });
+    submitButton.addEventListener('mouseout', function() {
+        submitButton.style.backgroundColor = '#003366'; 
     });
 </script>
 {% endblock %}
