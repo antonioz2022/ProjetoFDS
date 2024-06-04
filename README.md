@@ -41,6 +41,7 @@
 - [Vídeo Protótipo Lo-fi (Entrega 3)](https://drive.google.com/file/d/11NCHewJHb13nGSothLuZdSU_Ue_vnBxS/view?usp=sharing)
 - [Vídeo Deployment na Azure (Entrega 3)](https://drive.google.com/file/d/1znLucGQgH1tnXBcHvClpihP1S1Pc-vti/view?usp=sharing)
 - [Vídeo Protótipo Lo-fi (Entrega 4)](https://drive.google.com/file/d/1tNo3-yiOqusEvPI7XZYyGXBzmCqKoOPS/view?usp=sharing)
+- [Slides](https://www.canva.com/design/DAGGztfORu8/efa7n2Fmz3LkGDwuZ4LxEQ/edit?utm_content=DAGGztfORu8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## 📜 Licença
 
