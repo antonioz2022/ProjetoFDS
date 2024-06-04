@@ -74,7 +74,6 @@
           <h4>Espécie: {{ pet.species }}</h4>
           <h4>Idade: {{ pet.age }}</h4>
           <p>Descrição: {{ pet.description }}</p>
-          <br><a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}"
           <a class='button-2' href="{% url 'pet4you:report' pet.id %}" style="background-color: #004261; color: white;">Reportar</a></br>
           <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
               {% csrf_token %}
