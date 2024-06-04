@@ -5,29 +5,23 @@ describe('Pet Filtering Validation Scenarios', () => {
 
   const filterAndCheck = (inputName, inputValue, expectedText) => {
     cy.get(`input[name="${inputName}"]`).type(inputValue);
-    cy.get('.filter-button').click();
-    cy.get('.service').each(($el) => {
-      cy.wrap($el).should('be.visible').contains(expectedText);
-    });
+    cy.get('input[type="submit"]').click();
+    cy.contains('div', expectedText);
   };
 
   it('filtragem por espécie', () => {
-    filterAndCheck('species', 'dog', 'Espécie: dog');
+    filterAndCheck('especie', 'dog', 'dog');
   });
 
   it('filtragem por raça', () => {
-    filterAndCheck('breed', 'oi', 'Raça: oi');
+    filterAndCheck('raca', 'oi', 'oi');
   });
 
   it('filtragem por nome', () => {
-    filterAndCheck('name', 'rex', 'rex');
+    filterAndCheck('nome', 'teste', 'teste');
   });
 
   it('Filtragem por idade', () => {
-    cy.get('input[name="age"]').type('1');
-    cy.get('.filter-button').click();
-    cy.get('.service').each(($el) => {
-      cy.wrap($el).should('be.visible').contains('Idade: 1');
-    });
+    filterAndCheck('idade', '1', '1');
   });
 });

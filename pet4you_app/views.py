@@ -181,25 +181,23 @@ def logout(request):
 
 
 def home(request):
-    form = PetFilterForm(request.GET or None)  
+    species = request.GET.get('especie')
+    breed = request.GET.get('raca')
+    name = request.GET.get('nome')
+    age = request.GET.get('idade')
 
-    pets_para_adocao = Pet.objects.all()  
-
-    species = request.GET.get('species', '')
-    breed = request.GET.get('breed', '')
-    age = request.GET.get('age', '')
-    name = request.GET.get('name', '')  
+    pets_para_adocao = Pet.objects.all()
 
     if species:
         pets_para_adocao = pets_para_adocao.filter(species=species)
     if breed:
-        pets_para_adocao = pets_para_adocao.filter(breed__icontains=breed)
+        pets_para_adocao = pets_para_adocao.filter(breed=breed)
+    if name:
+        pets_para_adocao = pets_para_adocao.filter(name=name)
     if age:
         pets_para_adocao = pets_para_adocao.filter(age=age)
-    if name:  
-        pets_para_adocao = pets_para_adocao.filter(name__icontains=name)
 
-    return render(request, "home.html", {'pets_para_adocao': pets_para_adocao, 'form': form})
+    return render(request, 'home.html', {'pets_para_adocao': pets_para_adocao})
 
 def edit_post(request, pet_id):
   

@@ -38,8 +38,8 @@
 </header>
 
 <section class="banner">
-  <div class="container" style="background-color: #; padding: 20px;"> <!-- Adiciona a cor de fundo bege ao banner e um pouco de espaço ao redor do conteúdo -->
-    <h2 style="color: #004261;">Bem-vindo ao Pet4You!</h2> <!-- Altera a cor do texto para azul -->
+  <div class="container" style="background-color: #; padding: 20px;"> 
+    <h2 style="color: #004261;">Bem-vindo ao Pet4You!</h2> 
     <a href="#" class="btn" style="background-color: #004261; color: white;">Encontre seu pet</a>
   </div>
 </section>
@@ -48,17 +48,21 @@
   <div class="container">
     <h2>Confira os pets disponíveis para adoção:</h2>
 
-   
-    <form method="GET" class="filter-form">
-      <label for="id_species">Espécie:</label>
-      {{ form.species }}
-      <label for="id_breed">Raça:</label>
-      {{ form.breed }}
-      <label for="id_age">Idade:</label>
-      {{ form.age }}
-      <label for="id_name">Nome:</label>
-      {{ form.name }}
-      <button type="submit" class="filter-button">Filtrar</button>
+    <form method="GET" action="{% url 'pet4you:home' %}">
+      <input type="text" name="especie" placeholder="Especie">
+      <input type="text" name="raca" placeholder="Raça">
+      <input type="text" name="nome" placeholder="Nome">
+      <input type="text" name="idade" placeholder="Idade">
+      <input type="submit" value="Filtrar">
+
+      {% for pet in pets_para_adocao %}
+      <div>
+          <h2>{{ pet.nome }}</h2>
+          <p>{{ pet.especie }}</p>
+          <p>{{ pet.raca }}</p>
+          <p>{{ pet.idade }}</p>
+      </div>
+  {% endfor %}
   </form>
 
     <div class="services">
@@ -70,7 +74,7 @@
           <h4>Espécie: {{ pet.species }}</h4>
           <h4>Idade: {{ pet.age }}</h4>
           <p>Descrição: {{ pet.description }}</p>
-          <br><a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}" style="background-color: #004261; color: white;">Editar</a></br>
+          <br><a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}"
           <a class='button-2' href="{% url 'pet4you:report' pet.id %}" style="background-color: #004261; color: white;">Reportar</a></br>
           <form method="post" action="{% url 'pet4you:favoritar_pet' pet.id %}">
               {% csrf_token %}
