@@ -91,7 +91,8 @@
                 <p>Breed: {{ pet.breed }}</p>
                 <p>Age: {{ pet.age }}</p>
                 <p>Description: {{ pet.description }}</p><br>
-                <a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}" style="background-color: #004261; color: white;">Editar</a>
+                <a class='button-2'href="{% url 'pet4you:edit_post' pet.id %}" style="background-color: #004261; color: white; padding: 2px;">Editar</a>
+                <a class='button-2'href="{% url 'pet4you:vaccine_card' pet.id %}" style="background-color: #004261; color: white; margin-top: 10px; padding: 2px;">Vacinas</a>
                 </form>
             </div>
         </div>

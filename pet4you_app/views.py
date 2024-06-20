@@ -18,6 +18,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 from .forms import PetFilterForm
+from .forms import VaccineForm
 from django.utils import timezone
 from datetime import timedelta
 import platform
@@ -53,6 +54,26 @@ def create_admin_user(request):
         return JsonResponse({'status': 'admin_created'})
     else:
         return JsonResponse({'status': 'admin_exists'})
+    
+def vaccine_card(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    vaccines = pet.vaccines.all()
+    return render(request, 'vaccine_card.html', {'pet': pet, 'vaccines': vaccines})
+
+def vaccine_add(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    
+    if request.method == 'POST':
+        form = VaccineForm(request.POST)
+        if form.is_valid():
+            vaccine = form.save(commit=False)
+            vaccine.pet = pet
+            vaccine.save()
+            return redirect('pet4you:vaccine_card', pet_id=pet.id)
+    else:
+        form = VaccineForm()
+    
+    return render(request, 'vaccine_add.html', {'form': form, 'pet': pet})
 
 def createPost(request):
    p = Pet.objects.all()

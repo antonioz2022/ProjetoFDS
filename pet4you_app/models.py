@@ -14,6 +14,15 @@ class Pet(models.Model):
 
     def __str__(self):
         return self.name
+
+class Vaccine(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name='vaccines')
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+    next_due_date = models.DateField(blank=True, null=True)
+    
+    def __str__(self):
+        return f"{self.name} para {self.pet.name} em {self.date}"
     
 class Report(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
