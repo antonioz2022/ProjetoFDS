@@ -21,7 +21,7 @@ class VaccineForm(forms.ModelForm):
 
     def clean_next_due_date(self):
         next_due_date = self.cleaned_data['next_due_date']
-        if next_due_date < datetime.date.today():
+        if next_due_date != None and next_due_date < datetime.date.today():
             raise ValidationError("A próxima dose não pode ser uma data passada.")
         return next_due_date
 
