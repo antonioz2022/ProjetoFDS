@@ -29,18 +29,21 @@
 ## 🔗 Links
 
 - [Aplicação Web](https://pet4you.azurewebsites.net/)
-- [Instruções de Uso](https://docs.google.com/document/d/1ybGNQyFeuDRKDxlOfUbdjYDhnYqXxlAIQ2FQG86XLTk/edit?usp=sharing)
+- [Instruções de uso](https://docs.google.com/document/d/1ybGNQyFeuDRKDxlOfUbdjYDhnYqXxlAIQ2FQG86XLTk/edit?usp=sharing)
 - [Vídeo de Demonstração (Entrega 2)](https://drive.google.com/file/d/1PR5_CsYrUPOs4ukKe2cEopajiwqqb-uJ/view?usp=sharing)
 - [Diagrama de Atividades](https://github.com/user-attachments/files/15540761/diagrama_de_atividades_-_Pagina_1-1.pdf)
 - [Relato de Programação em Dupla](https://docs.google.com/document/d/1KHpFzLb8t2601TdZfsfJMH6GydaTPVuZl1ep9edle9E/edit?usp=sharing)
 - [Protótipo Lo-fi (Entrega 2)](https://drive.google.com/drive/u/1/folders/1WEpMOpL3696-ZcH1n73YvEpLO-fvMPJ7)
-- [Vídeo de Testes E2E](https://drive.google.com/file/d/1oT_G7wpCm5boc7kReiQZREWzYVCipxGK/view?usp=sharing)
+- [Vídeo de Testes E2E (Testes da Entrega 3)](https://drive.google.com/file/d/1oT_G7wpCm5boc7kReiQZREWzYVCipxGK/view?usp=sharing)
 - [Figma](https://www.figma.com/file/6fQ0l0kcamxhkVwwXCmDXM/PROT%C3%92TIPO?type=design&node-id=0-1&mode=design&t=RlXBIyNH6rh93kpj-0)
 - [Jira](https://cesar-vct.atlassian.net/jira/software/projects/FD/boards/4)
 - [Vídeo de Demonstração (Entrega 3)](https://drive.google.com/file/d/13H8vYiELsR7vVFkyCrwYYz2pcRVKrZDn/view?usp=sharing)
 - [Vídeo Protótipo Lo-fi (Entrega 3)](https://drive.google.com/file/d/11NCHewJHb13nGSothLuZdSU_Ue_vnBxS/view?usp=sharing)
-- [Vídeo Deployment na Azure (Entrega 3)](https://drive.google.com/file/d/1znLucGQgH1tnXBcHvClpihP1S1Pc-vti/view?usp=sharing)
+- [Vídeo Build & Deployment na Azure (Entrega 3/4)](https://drive.google.com/file/d/1znLucGQgH1tnXBcHvClpihP1S1Pc-vti/view?usp=sharing)
 - [Vídeo Protótipo Lo-fi (Entrega 4)](https://drive.google.com/file/d/1tNo3-yiOqusEvPI7XZYyGXBzmCqKoOPS/view?usp=sharing)
+- [Slides](https://www.canva.com/design/DAGGztfORu8/efa7n2Fmz3LkGDwuZ4LxEQ/edit?utm_content=DAGGztfORu8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- [Vídeo de Demonstração (Entrega 4)](https://drive.google.com/file/d/1vsoc8_ATIGhn6OHp78A7F37D411IrNk2/view?usp=sharing)
+- [Vídeo de Testes E2E (Testes da Entrega 4)](https://drive.google.com/file/d/1yJ9HGiZ8X6YC_UDsTMs56F2-sT_8jwZg/view?usp=sharing)
 
 ## 📜 Licença
 

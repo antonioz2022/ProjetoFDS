@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet4You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+            color: #004261;
+        }
+
+        h2 {    
+            font-size: 1.5em;
+            text-align: center;
+            color: #007eb9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007eb9;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1em; 
+            min-width: 400px;
+        }
+
+        table thead tr {
+            background-color: #004261;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+        }
+
+        table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        table tbody tr:last-of-type {
+            border-bottom: 2px solid #004261;
+        }
+
+        button {
+            display: inline-block;
+            background-color: #004261;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #004261;
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            display: block;
+            width: 100%;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            background: #f4f4f9;
+            margin: 10px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li h2 {
+            margin: 0;
+        }
+
+        li a {
+            text-decoration: none;
+            background: #004261;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        li a:hover {
+            background: #004261;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cartão de Vacina de {{ pet.name }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vacina</th>
+                    <th>Data</th>
+                    <th>Próxima Dose</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if vaccines %}
+                {% for vaccine in vaccines %}
+                <tr>
+                    <td>{{ vaccine.name }}</td>
+                    <td>{{ vaccine.date }}</td>
+                    <td>{{ vaccine.next_due_date }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <h2>Pet não tem vacinas</h2>
+                {% endif %}
+            </tbody>
+        </table>
+        <a class="back-link" href="{% url 'pet4you:list' %}">Voltar para Meus Pets</a>
+        <a href="{% url 'pet4you:vaccine_add' pet.id %}">Adicionar Nova Vacina</a>
+    </div>
+</body>
+
+</html>

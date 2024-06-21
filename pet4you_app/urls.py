@@ -20,6 +20,8 @@ urlpatterns = [
     path('listar_pets/', views.listar_pets, name='listar_pets'),
     path('delete/<int:pet_id>/', views.delete_post, name='delete_post'),
     path('api/create_admin/', views.create_admin_user, name='create_admin_user'),
+    path('pets/<int:pet_id>/vaccine_card/', views.vaccine_card, name='vaccine_card'),
+    path('pets/<int:pet_id>/vaccine_add/', views.vaccine_add, name='vaccine_add'),
 
 
 
