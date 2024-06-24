@@ -9,7 +9,7 @@ describe('Teste de download de PDF', () => {
 
   it('Deve fazer o download do PDF corretamente', () => {
     // Clicar no link/botão de download do PDF
-    cy.get('.button-3').first().click();
+    cy.get('.content > .container > .services > .service > .button-3').first().click();
 
     // Esperar até que o arquivo PDF seja baixado
     cy.wait(5000); // Espera 5 segundos para o download ser completado
