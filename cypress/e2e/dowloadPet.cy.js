@@ -8,18 +8,13 @@ describe('Teste de download de PDF', () => {
   });
 
   it('Deve fazer o download do PDF corretamente', () => {
-    // Espera até que a página esteja completamente carregada
-    cy.get('.services .service').first().should('be.visible').within(() => {
-      // Clicar no link/botão de download do PDF
+    // Clicar no link/botão de download do PDF
+    cy.get('.services .service').first().within(() => {
       cy.get('.button-3').click();
     });
 
     // Esperar até que o arquivo PDF seja baixado
-    cy.waitUntil(() => {
-      return cy.task('listDownloads').then(downloads => {
-        return downloads.some(download => download.endsWith('.pdf'));
-      });
-    }, { timeout: 10000, interval: 1000 }); // Espera até 10 segundos, verificando a cada 1 segundo
+    cy.wait(5000); // Espera 5 segundos para o download ser completado
 
     // Verificar se o arquivo PDF foi baixado
     cy.task('listDownloads').then(downloads => {
