@@ -9,7 +9,9 @@ describe('Teste de download de PDF', () => {
   
     it('Deve fazer o download do PDF corretamente', () => {
       
-      cy.get(':nth-child(1) > div > .button-3').click();
+      cy.visit('/');
+
+      cy.get('.services .service').first().find('.button-2[href*="download_pet"]').click();
   
       cy.wait(5000);
   
