@@ -22,6 +22,7 @@ urlpatterns = [
     path('api/create_admin/', views.create_admin_user, name='create_admin_user'),
     path('pets/<int:pet_id>/vaccine_card/', views.vaccine_card, name='vaccine_card'),
     path('pets/<int:pet_id>/vaccine_add/', views.vaccine_add, name='vaccine_add'),
+    path('download_pet/<int:pet_id>/', views.download_pet, name='download_pet'),
 
 
 

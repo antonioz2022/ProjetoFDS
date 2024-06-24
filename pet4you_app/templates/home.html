@@ -82,7 +82,8 @@
               {% else %}
                   <button type="submit" class="button-2" style="background-color: #004261; color: white;">Favoritar</button>
               {% endif %}
-          </form>
+          </form></br>
+          <a class='button-2' href="{% url 'pet4you:download_pet' pet.id %}" style="background-color: #004261; color: white;">Download</a></br>
       </div>
 {% endfor %}
     </div>
