@@ -68,7 +68,8 @@
     <div class="services">
       {% for pet in pets_para_adocao %}
       <div class="service">
-          <img src="{{pet.photo}}" alt="" width="100" height="100">
+        <a class='button-3' href="{% url 'pet4you:download_pet' pet.id %}" style="background-color: #004261; color: white;">Download</a></br></br>  
+        <img src="{{pet.photo}}" alt="" width="100" height="100">
           <h3>{{ pet.name }}</h3>
           <h4>Raça: {{ pet.breed }}</h4>
           <h4>Espécie: {{ pet.species }}</h4>
@@ -83,7 +84,6 @@
                   <button type="submit" class="button-2" style="background-color: #004261; color: white;">Favoritar</button>
               {% endif %}
           </form></br>
-          <a class='button-2' href="{% url 'pet4you:download_pet' pet.id %}" style="background-color: #004261; color: white;">Download</a></br>
       </div>
 {% endfor %}
     </div>

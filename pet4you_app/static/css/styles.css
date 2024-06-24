@@ -456,9 +456,6 @@
 
 
 
-.posting-form {}
-
-
 
 /*INPUT*/
 .posting-form input[type="text"] {
@@ -523,6 +520,17 @@
   color: #fff;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-3 {
+  display: block;
+  padding: 10px;
+  background-color: #004261;
+  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
