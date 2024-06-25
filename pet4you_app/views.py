@@ -330,3 +330,12 @@ def delete_post(request, pet_id):
         return redirect('pet4you:home')
     else:
         return redirect('pet4you:home')
+
+@login_required
+def delete_post_as_user(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    user = request.user
+
+    pets = Pet.objects.filter(owner=user)
+    pet.delete()
+    return render(request, 'list.html', {'pets': pets})
