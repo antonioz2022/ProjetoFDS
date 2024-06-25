@@ -21,6 +21,13 @@ from .forms import PetFilterForm
 from .forms import VaccineForm
 from django.utils import timezone
 from datetime import timedelta
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
+from django.conf import settings
+import os
+import urllib.request
+from PIL import Image as PILImage
 import platform
 if platform.system() == "Windows":
     from winotify import Notification
@@ -54,6 +61,51 @@ def create_admin_user(request):
         return JsonResponse({'status': 'admin_created'})
     else:
         return JsonResponse({'status': 'admin_exists'})
+    
+def download_pet(request,pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{pet.name}.pdf"'
+
+    p = canvas.Canvas(response, pagesize=letter)
+    width, height = letter
+
+    # Título
+    title = "Informações do Pet"
+    p.setFont("Helvetica-Bold", 20)
+    text_width = p.stringWidth(title, "Helvetica-Bold", 20)
+    p.drawString((width - text_width) / 2, height - 50, title)
+
+    # Imagem
+    if pet.photo:
+        photo_url = pet.photo
+        
+        try:
+            image = ImageReader(photo_url)
+            p.drawImage(image, (width - 150) / 2, height - 250, width=150, height=150)
+        except Exception as e:
+            print(f"Error loading image from URL: {e}")
+            p.setFont("Helvetica", 12)
+            #p.drawString(100, height - 250, "Imagem não disponível")
+            text_width = p.stringWidth("Imagem não disponível", "Helvetica-Bold", 20)
+            p.drawString((width - text_width) / 2, height - 250, "Imagem não disponível")
+            
+
+    # Detalhes
+    p.setFont("Helvetica-Bold", 12)
+    y_position = height - 340
+    p.drawString(100, y_position, f"Nome: {pet.name}")
+    p.setFont("Helvetica", 12)
+    p.drawString(100, y_position - 30, f"Espécie: {pet.species}")
+    p.drawString(100, y_position - 60, f"Raça: {pet.breed}")
+    p.drawString(100, y_position - 90, f"Idade: {pet.age}")
+    p.drawString(100, y_position - 120, f"Descrição: {pet.description}")
+
+    p.showPage()
+    p.save()
+
+    return response
     
 def vaccine_card(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
@@ -278,3 +330,12 @@ def delete_post(request, pet_id):
         return redirect('pet4you:home')
     else:
         return redirect('pet4you:home')
+
+@login_required
+def delete_post_as_user(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    user = request.user
+
+    pets = Pet.objects.filter(owner=user)
+    pet.delete()
+    return render(request, 'list.html', {'pets': pets})
