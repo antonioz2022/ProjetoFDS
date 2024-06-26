@@ -32,3 +32,15 @@ class PetFilterForm(forms.Form):
     name = forms.CharField(max_length=100, required=False) 
     
     
+class AdoptionRequestForm(forms.Form):
+    full_name = forms.CharField(label='Nome completo', max_length=100, required=True)
+    cpf = forms.CharField(label='CPF', max_length=14, required=True)
+    birth_date = forms.DateField(label='Nascimento', widget=forms.DateInput(attrs={'type': 'date'}), required=True)
+    email = forms.EmailField(label='E-mail', required=True)
+    phone = forms.CharField(label='Celular', max_length=15, required=True)
+    address = forms.CharField(label='Endereço', max_length=255, required=True)
+    number = forms.CharField(label='Número', max_length=10, required=True)
+    complement = forms.CharField(label='Complemento', max_length=100, required=False)
+    neighborhood = forms.CharField(label='Bairro', max_length=100, required=True)
+    state = forms.CharField(label='Estado', max_length=2, required=True, initial='')
+    city = forms.CharField(label='Cidade', max_length=100, required=True, initial='')

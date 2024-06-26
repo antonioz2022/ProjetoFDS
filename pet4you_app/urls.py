@@ -24,6 +24,7 @@ urlpatterns = [
     path('pets/<int:pet_id>/vaccine_add/', views.vaccine_add, name='vaccine_add'),
     path('download_pet/<int:pet_id>/', views.download_pet, name='download_pet'),
     path("delete_as_user/<int:pet_id>/", views.delete_post_as_user, name="delete_post_as_user"),
+    path('adopt/<int:pet_id>/', views.adopt_pet, name='adopt_pet'),
 
 
 
