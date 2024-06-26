@@ -35,6 +35,7 @@ if platform.system() == "Windows":
 else:
     Notification = None
 
+from .forms import AdoptionRequestForm
 def new_notification(msg):
     print(f"Notification: {msg}")
     if Notification:
@@ -339,3 +340,25 @@ def delete_post_as_user(request, pet_id):
     pets = Pet.objects.filter(owner=user)
     pet.delete()
     return render(request, 'list.html', {'pets': pets})
+
+
+@login_required
+def adopt_pet(request, pet_id):
+    pet = get_object_or_404(Pet, pk=pet_id)
+    user = request.user
+    
+    if request.method == 'POST':
+        form = AdoptionRequestForm(request.POST)
+        if form.is_valid():
+            # Processa os dados do formulário aqui, se necessário
+            pet.owner = user
+            pet.adopted = True
+            pet.adoption_date = timezone.now()
+            pet.save()
+            new_notification("Solicitação feita com sucesso!")
+            messages.success(request, 'Você adotou o pet com sucesso!')
+            return redirect("pet4you:home")
+    else:
+        form = AdoptionRequestForm()
+    
+    return render(request, 'adopt.html', {'pet': pet, 'form': form})
