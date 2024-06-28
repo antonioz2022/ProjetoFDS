@@ -35,7 +35,6 @@ if platform.system() == "Windows":
 else:
     Notification = None
 
-from .forms import AdoptionRequestForm
 def new_notification(msg):
     print(f"Notification: {msg}")
     if Notification:
@@ -348,9 +347,22 @@ def adopt_pet(request, pet_id):
     user = request.user
     
     if request.method == 'POST':
-        form = AdoptionRequestForm(request.POST)
-        if form.is_valid():
-            # Processa os dados do formulário aqui, se necessário
+        full_name = request.POST.get('full_name')
+        cpf = request.POST.get('cpf')
+        birth_date = request.POST.get('birth_date')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        number = request.POST.get('number')
+        complement = request.POST.get('complement', '')
+        neighborhood = request.POST.get('neighborhood')
+        state = request.POST.get('state')
+        city = request.POST.get('city')
+
+        # Aqui você pode adicionar validações manuais se necessário
+        if not all([full_name, cpf, birth_date, email, phone, address, number, neighborhood, state, city]):
+            messages.error(request, 'Por favor, preencha todos os campos obrigatórios.')
+        else:
             pet.owner = user
             pet.adopted = True
             pet.adoption_date = timezone.now()
@@ -358,7 +370,5 @@ def adopt_pet(request, pet_id):
             new_notification("Solicitação feita com sucesso!")
             messages.success(request, 'Você adotou o pet com sucesso!')
             return redirect("pet4you:home")
-    else:
-        form = AdoptionRequestForm()
     
-    return render(request, 'adopt.html', {'pet': pet, 'form': form})
+    return render(request, 'adopt.html', {'pet': pet})
